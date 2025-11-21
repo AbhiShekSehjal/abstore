@@ -11,7 +11,18 @@ class IndexController extends Controller
     {
         $products   = Product::inRandomOrder()->take(6)->get();
         $categories = Category::all();
-
         return view('index', compact('categories', 'products'));
+    }
+
+    public function show($id)
+    {
+        $product = Product::findOrFail($id);
+
+        $products = Product::where('category_id', $product->category_id)
+            ->where('id', '!=', $product->id)
+            ->take(6)
+            ->get();
+
+        return view('product', compact('product', 'products'));
     }
 }

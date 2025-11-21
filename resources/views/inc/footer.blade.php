@@ -1,16 +1,15 @@
 <footer class="container footerContainer mt-5 border-top">
     <div class="row py-4">
-        <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="col-lg-6 col-md-6 col-sm-12 p-0">
             <a class="navbar-brand heading-font fs-3 fw-bold" href="/"><img
                     src="https://res.cloudinary.com/djmmx0tri/image/upload/v1763620634/Group_1_rlhqbh.png"
                     alt="abstore-logo" width='150'></a>
 
-            <p class="opacity-75 footerPera mt-3 w-75"><small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
-                    dolor
-                    fugiat nihil praesentium facere, in quibusdam amet, nostrum velit corporis quo exercitationem
-                    dignissimos cumque labore earum ut. Ab, voluptatem illo.</small></p>
+            <p class="opacity-75 footerPera mt-3 w-75"><small>We believe that shopping should be simple and fun, and
+                    that's exactly what we work for every day. Welcome to Abstore — your one-stop shop for everything
+                    you love.</small></p>
         </div>
-        <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="col-lg-3 col-md-6 col-sm-12 p-0">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item navLink">
                     <a class="nav-link pt-0 pb-3" href="/">Home</a>
@@ -21,9 +20,9 @@
                 <li class="nav-item navLink">
                     <a class="nav-link pt-0 pb-3" href="/cart">Cart</a>
                 </li>
-                <li class="nav-item navLink">
+                <!-- <li class="nav-item navLink">
                     <a class="nav-link pt-0 pb-3" href="/contact">Contact</a>
-                </li>
+                </li> -->
                 <li class="nav-item navLink">
                     <a class="nav-link pt-0 pb-3" href="/products">Products</a>
                 </li>
@@ -31,7 +30,7 @@
         </div>
 
 
-        <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="col-lg-3 col-md-6 col-sm-12 p-0">
             <div class="followUs">
                 <h5 class="mb-4 followUsHeading"><b>Follow Us</b></h5>
                 <a href="" class="text-decoration-none text-dark py-2 d-block socialLink" rel="noopener noreferrer"
@@ -58,5 +57,5 @@
             </div>
         </div>
     </div>
-    <div class="border-top p-3 text-dark text-center navLink">Abstore . 2025</div>
 </footer>
+<div class="container border-top p-3 text-center navLink">Abstore . 2025</div>

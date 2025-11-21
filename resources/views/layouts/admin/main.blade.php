@@ -34,10 +34,10 @@
         font-family: "Jost", sans-serif;
     }
 
-    .userProfilePic {
+    .adminProfilePic {
         width: 60px !important;
         height: 60px !important;
-        border-radius: 50% !important;
+        /* border-radius: 50% !important; */
         object-fit: cover;
         border: 0.5px solid grey;
     }
@@ -49,13 +49,13 @@
 
 <body>
 
-    @include ('inc/navbar')
+    @include ('inc/admin/navbar')
 
     <div class='container border-top p-0 overflow-hidden'>
         @yield('content')
     </div>
 
-    @include ('inc/footer')
+    @include ('inc/admin/footer')
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

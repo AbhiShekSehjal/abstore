@@ -58,7 +58,6 @@
 .categoryName {
     position: absolute;
     font-family: "Jost", sans-serif;
-    bottom: 50%;
     top: 0;
     left: 15px;
     font-size: 50px;
@@ -147,7 +146,7 @@
         <ul class="splide__list">
             @foreach($categories as $category)
             <li class="splide__slide">
-                <a href="">
+                <a href="category/{{ $category->id }}">
                     <img class='sliderImg' src="{{ $category->category_image }}" alt="Slide 1">
                     <p class='categoryName'>{{ $category->name }}</p>
                 </a>
@@ -166,32 +165,30 @@
     </div>
 </div>
 
-<div class="forthSection">
+<div class="forthSection overflow-hidden">
     <h1 class='productHeading mb-5'>Our Products</h1>
 
     <div class="products">
-
         <div class="row d-flex align-items-center justify-content-between flex-wrap">
             @foreach($products as $product)
             <div class="card rounded-0 col-lg-4 productcard">
                 <div class="productImage overflow-hidden">
-                    <img src="{{ $product->image }}"
-                        class="card-img-top" alt="...">
+                    <a href="product/{{ $product->id }}">
+                        <img src="{{ $product->image }}" class="card-img-top" alt="Image of {{ $product->name }}">
+                    </a>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">{{ $product->name }}</h5>
                     <p class="card-text">{{ $product->description}}</p>
-                    <a href="#" class="btn btn-primary rounded-0">Add to cart</a>
+                    <a href="#" class="btn btn-outline-dark rounded-0">Add to cart</a>
                 </div>
             </div>
             @endforeach
         </div>
-
-
     </div>
 
     <div class="d-flex justify-content-center my-5">
-        <a href='/products' class='btn btn-lg btn-outline-dark rounded-0'>More</a>
+        <a href='/products' class='btn btn-lg btn-outline-success rounded-0'>More</a>
     </div>
 
 </div>
