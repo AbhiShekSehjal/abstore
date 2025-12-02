@@ -30,6 +30,22 @@
         font-weight: 500;
     }
 
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #b2adadff;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #000000ff;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
     h1 {
         font-family: "Jost", sans-serif;
     }

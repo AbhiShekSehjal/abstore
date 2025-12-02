@@ -25,8 +25,11 @@
                     <a class="nav-link" href="/cart">Cart</a>
                 </li>
             </ul>
-            <a class="nav-link ms-auto" href="/profile">
+            <!-- <a class="nav-link ms-auto" href="/profile">
                 <img src="https://res.cloudinary.com/djmmx0tri/image/upload/v1753439425/samples/man-portrait.jpg" class='userProfilePic' alt="userProfilePic">
+            </a> -->
+            <a class="nav-link ms-auto" href="/profile">
+               Welcome, {{ Auth::user()->name }}
             </a>
         </div>
     </div>

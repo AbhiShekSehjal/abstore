@@ -119,6 +119,7 @@
     overflow: hidden;
 }
 
+
 @media screen and (max-width: 600px) {
     #main-slider {
         height: 200px !important;

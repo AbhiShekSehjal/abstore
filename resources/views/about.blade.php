@@ -59,7 +59,7 @@
             Welcome to Abstore — your one-stop shop for everything you love.</p>
     </div>
 
-    <img src="https://res.cloudinary.com/djmmx0tri/image/upload/v1763705306/Group_2_1_fcvpdl.jpg" alt="" class='abstoreMockup mt-5'>
+    <img src="https://res.cloudinary.com/djmmx0tri/image/upload/v1764673213/Group_2_2_nk43vf.jpg" alt="" class='abstoreMockup mt-5'>
 </div>
 
 @endsection

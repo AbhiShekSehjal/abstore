@@ -34,6 +34,22 @@
         font-family: "Jost", sans-serif;
     }
 
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #b2adadff;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #000000ff;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
     .userProfilePic {
         width: 60px !important;
         height: 60px !important;

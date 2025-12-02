@@ -10,7 +10,7 @@
 
 .countBox:hover {
     background: #000000ff !important;
-    transition: all 1s ease !important;
+    transition: all 0.6s ease !important;
     cursor: pointer;
 }
 </style>
