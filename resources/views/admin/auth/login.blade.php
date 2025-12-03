@@ -23,7 +23,7 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
-    
+
 </head>
 
 <style>
@@ -34,7 +34,8 @@
 </style>
 
 <body>
-    <div class="container-fluid row d-flex align-items-center justify-content-center" style="height: 100vh; padding: 0; margin: 0;">
+    <div class="container-fluid row d-flex align-items-center justify-content-center"
+        style="height: 100vh; padding: 0; margin: 0;">
         <div class="col-lg-4 col-md-8 col-sm-12 shadow p-5 rounded-0 bg-white">
             <div class="d-flex align-items-center justify-content-center mb-4">
                 <img src="https://res.cloudinary.com/djmmx0tri/image/upload/v1763620634/Group_1_rlhqbh.png"
@@ -44,15 +45,15 @@
             <form method="POST" action="{{ route('AdminloginMatcher') }}">
                 @csrf
                 <div class="mb-3">
-                    <label for="userEmail" class="form-label">Email</label>
-                    <input type="email" class="form-control rounded-0" name="email" id="userEmail">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control rounded-0" name="email" id="email">
                     @error('email')
                     <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="userpassword" class="form-label">Password</label>
-                    <input type="password" class="form-control rounded-0" name="password" id="userpassword">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control rounded-0" name="password" id="password">
                     @error('password')
                     <small class="text-danger">{{ $message }}</small>
                     @enderror

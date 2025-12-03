@@ -8,7 +8,7 @@ class AboutController extends Controller
 {
     public function index()
     {
-        if(Auth::check()){
+        if(Auth::check()){ 
         return view('about');
         }else{
             return redirect()->route('LoginPage');

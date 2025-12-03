@@ -57,3 +57,5 @@ Route::get('admin/auth/register', [AdminAuthController::class, 'registerPage'])-
 Route::post('AdminRegisterSave', [AdminAuthController::class, 'register'])->name('AdminRegisterSave');
 
 Route::post('AdminloginMatcher', [AdminAuthController::class, 'login'])->name('AdminloginMatcher');
+
+Route::get('AdminLogout', [AdminAuthController::class, 'logout'])->name('AdminLogout'); 

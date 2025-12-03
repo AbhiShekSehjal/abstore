@@ -18,7 +18,7 @@
 
 @section('content')
 
-<h1 class='mt-3'>Dashboard</h1>
+<h1 class='mt-4'>Dashboard</h1>
 
 <div class="row p-3 d-flex flex-wrap">
     <a href='/admin/products'

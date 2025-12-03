@@ -64,9 +64,9 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="userpassword-confirm" class="form-label">Confirm Password</label>
+                    <label for="password_confirmation" class="form-label">Confirm Password</label>
                     <input type="password" class="form-control rounded-0" name="password_confirmation"
-                        id="userpassword-confirm">
+                        id="password_confirmation">
                     @error('password_confirmation')
                     <small class="text-danger">{{ $message }}</small>
                     @enderror

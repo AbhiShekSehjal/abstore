@@ -43,31 +43,31 @@
             <form method="POST" action="{{ route('AdminRegisterSave') }}">
                 @csrf
                 <div class="mb-3">
-                    <label for="adminName" class="form-label">Username</label>
-                    <input type="text" class="form-control rounded-0" name="name" id="adminName">
-                    @error('adminName')
+                    <label for="name" class="form-label">Username</label>
+                    <input type="text" class="form-control rounded-0" name="name" id="name">
+                    @error('name')
                     <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="adminEmail" class="form-label">Email</label>
-                    <input type="email" class="form-control rounded-0" name="email" id="adminEmail">
-                    @error('adminEmail')
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control rounded-0" name="email" id="email">
+                    @error('email')
                     <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="adminPassword" class="form-label">Password</label>
-                    <input type="password" class="form-control rounded-0" name="password" id="adminPassword">
-                    @error('adminPassword')
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control rounded-0" name="password" id="password">
+                    @error('password')
                     <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="adminPassword_confirm" class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control rounded-0" name="adminPassword_confirmation"
-                        id="adminPassword_confirm">
-                    @error('adminPassword_confirm')
+                    <label for="password_confirmation" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control rounded-0" name="password_confirmation"
+                        id="password_confirmation">
+                    @error('password_confirmation')
                     <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>

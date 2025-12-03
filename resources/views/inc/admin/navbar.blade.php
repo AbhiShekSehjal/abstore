@@ -20,7 +20,7 @@
                 </li>
             </ul>
             <a class="nav-link ms-auto" href="/admin/profile">
-                <img src="https://res.cloudinary.com/djmmx0tri/image/upload/v1753439424/samples/smile.jpg" class='adminProfilePic' alt="adminProfilePic">
+                Welcome, {{ Auth::user()->name }}
             </a>
         </div>
     </div>

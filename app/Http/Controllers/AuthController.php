@@ -45,6 +45,15 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
+
+            if (Auth::user()->role !== 'customer') {
+
+                return back()->withErrors([
+                    'email' => "Only customers can login!",
+                ])->onlyInput('email');
+
+            }
+
             return redirect()->route('Home');
         }
 
