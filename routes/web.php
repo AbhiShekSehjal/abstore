@@ -4,11 +4,14 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminCategoriesController;
 use App\Http\Controllers\Admin\AdminIndexController;
+use App\Http\Controllers\Admin\AdminOrdersController;
 use App\Http\Controllers\Admin\AdminProductsController;
 use App\Http\Controllers\Admin\AdminProfileController;
+use App\Http\Controllers\Admin\AdminUsersController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -20,11 +23,16 @@ Route::get('product/{id}', [IndexController::class, 'show']);
 
 Route::get('category/product/{id}', [IndexController::class, 'show']);
 
-Route::get('products', [ProductController::class, 'index']);
+Route::get('products', [ProductController::class, 'index'])->name('products');
 
 Route::get('about', [AboutController::class, 'index']);
 
+Route::get('contact', [ContactController::class, 'index']);
+
 Route::get('cart', [CartController::class, 'index']);
+
+Route::post('add-to-cart/{id}', [CartController::class, 'add'])
+    ->name('cart.add');
 
 Route::get('category/{id}', [CategoryController::class, 'show']);
 
@@ -50,6 +58,10 @@ Route::get('admin/categories', [AdminCategoriesController::class, 'index']);
 
 Route::get('admin/products', [AdminProductsController::class, 'index']);
 
+Route::get('admin/orders', [AdminOrdersController::class, 'index']);
+
+Route::get('admin/users', [AdminUsersController::class, 'index']);
+
 Route::get('admin/auth/login', [AdminAuthController::class, 'loginPage'])->name('AdminLoginPage');
 
 Route::get('admin/auth/register', [AdminAuthController::class, 'registerPage'])->name('AdminRegisterPage');
@@ -58,4 +70,4 @@ Route::post('AdminRegisterSave', [AdminAuthController::class, 'register'])->name
 
 Route::post('AdminloginMatcher', [AdminAuthController::class, 'login'])->name('AdminloginMatcher');
 
-Route::get('AdminLogout', [AdminAuthController::class, 'logout'])->name('AdminLogout'); 
+Route::get('AdminLogout', [AdminAuthController::class, 'logout'])->name('AdminLogout');

@@ -58,4 +58,4 @@
         </div>
     </div>
 </footer>
-<div class="container border-top p-3 text-center navLink">Abstore . 2025</div>
+<div class="container border-top p-3 text-center navLink">Abstore . 2026</div>

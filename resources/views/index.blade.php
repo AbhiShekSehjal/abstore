@@ -96,6 +96,14 @@
     padding: 0;
 }
 
+.card {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.card-body {
+    padding-bottom: 30px;
+}
+
 .card-img-top {
     height: 400px;
     object-fit: cover;
@@ -145,14 +153,18 @@
     <div class="splide__track">
 
         <ul class="splide__list">
-            @foreach($categories as $category)
+            @forelse($categories as $category)
             <li class="splide__slide">
                 <a href="category/{{ $category->id }}">
                     <img class='sliderImg' src="{{ $category->category_image }}" alt="Slide 1">
                     <p class='categoryName'>{{ $category->name }}</p>
                 </a>
             </li>
-            @endforeach
+            @empty
+            <div class="text-center">
+                <h3>No category found.</h3>
+            </div>
+            @endforelse
         </ul>
     </div>
 </div>
@@ -169,23 +181,38 @@
 <div class="forthSection overflow-hidden">
     <h1 class='productHeading mb-5'>Our Products</h1>
 
-    <div class="products">
-        <div class="row d-flex align-items-center justify-content-between flex-wrap">
-            @foreach($products as $product)
-            <div class="card rounded-0 col-lg-4 productcard">
+    <div class="row g-1">
+        @forelse($products as $product)
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+            <div class="card rounded-0 productcard h-100">
                 <div class="productImage overflow-hidden">
                     <a href="product/{{ $product->id }}">
                         <img src="{{ $product->image }}" class="card-img-top" alt="Image of {{ $product->name }}">
                     </a>
                 </div>
-                <div class="card-body">
+                <div class="card-body d-flex flex-column">
                     <h5 class="card-title">{{ $product->name }}</h5>
-                    <p class="card-text">{{ $product->description}}</p>
-                    <a href="#" class="btn btn-outline-dark rounded-0">Add to cart</a>
+                    <p class="card-text">{{ $product->description }}</p>
+
+                    <p class="card-price mt-auto">
+                        <span class="fw-bold fs-5">{{ $product->price }} &#8377;</span>
+                        &nbsp;&nbsp;<del>{{ $product->sale_price }} &#8377;</del>
+                    </p>
+                    <p class="card-discount">{{ $product->discount }} % off</p>
+
+
+                    <div class="d-flex gap-2">
+                        <a href="#" class="btn btn-outline-dark rounded-0 w-100">Add to cart</a>
+                        <a href="#" class="btn btn-success rounded-0 w-100">Buy Now</a>
+                    </div>
                 </div>
             </div>
-            @endforeach
         </div>
+        @empty
+        <div class="col-12 text-center py-5">
+            <h3>No products found</h3>
+        </div>
+        @endforelse
     </div>
 
     <div class="d-flex justify-content-center my-5">
@@ -202,6 +229,10 @@ var splide = new Splide('.splide', {
     type: 'loop',
     perPage: 3,
     focus: 'center',
+    autoplay: true,
+    interval: 2000,
+    pauseOnHover: true,
+    pauseOnFocus: true,
 });
 
 splide.mount();

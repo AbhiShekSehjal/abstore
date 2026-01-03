@@ -1,1 +1,1 @@
-<footer class="container border-top p-3 text-center navLink mt-5">Abstore . 2025</footer>
+<footer class="container border-top p-3 text-center navLink mt-5">Abstore . 2026</footer>

@@ -10,25 +10,29 @@
 
 .productcard {
     border: none;
-    border: 3px solid white;
+    border: 1px solid white;
     overflow: hidden;
     padding: 0;
+}
+
+.card {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.card-body {
+    padding-bottom: 30px;
 }
 
 .card-img-top {
     height: 400px;
     object-fit: cover;
-    border-radius: 0px;
+    border-radius: 0 !important;
+
 }
 
 .productcard:hover .card-img-top {
     transform: scale(1.06);
     transition: all 0.5s ease;
-}
-
-.productHeading {
-    font-size: 60px;
-    text-align: center;
 }
 
 .card-text {
@@ -41,83 +45,146 @@
 .form-check-input[type=radio] {
     border-radius: 0;
 }
+
+.filterSection {
+    position: sticky;
+    top: 80px;
+}
 </style>
 @endpush
 
 @section('content')
 
-<div class="row">
+<div class="container-fluid">
+    <div class="row">
 
-    <div class="col-3 border-end rounded-5 pt-3 pe-3 ps-3">
-        <b class='fs-4'>Filter</b>
-        <hr>
-
-        <p class='fs-4'>Products</p>
-
-        @foreach($Categories as $category)
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="{{ $category->name }}" checked>
-            <label class="form-check-label" for="{{ $category->name }}">
-                {{ $category->name }}
-            </label>
-        </div>
-        @endforeach
-
-        <hr>
-
-        <p class='fs-4'>Sort by</p>
-
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="Discount" checked>
-            <label class="form-check-label" for="Discount">Discount</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="Low Price" checked>
-            <label class="form-check-label" for="Low Price">Low Price</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="High Price" checked>
-            <label class="form-check-label" for="High Price">High Price</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="Trending" checked>
-            <label class="form-check-label" for="Trending">Trending</label>
+        <div class="d-lg-none mb-1 mt-2">
+            <button class="btn btn-dark rounded-0 w-100" data-bs-toggle="collapse" data-bs-target="#filterCollapse"
+                aria-expanded="false">
+                ☰ Filter
+            </button>
         </div>
 
-        <hr>
 
-        <p class='fs-4'>Price</p>
+        <div class="col-lg-3 col-md-12 mb-4 border-end pt-3 pe-3 ps-3
+            collapse d-lg-block filterSection" id="filterCollapse">
+            <form method="GET" action="{{ route('products') }}">
+                <b class='fs-4'>Filter</b>
+                <hr>
 
-        <input type="range" class="form-range" min="0" max="10000" value="50" id="range4">
-        <output for="range4" id="rangeValue" aria-hidden="true"></output>
+                <p class='fs-4'>Products</p>
 
-        <hr>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="category" value=""
+                        {{ request('category') == null ? 'checked' : '' }}>
+                    <label class="form-check-label">All Products</label>
+                </div>
 
-        <button class='btn btn-dark rounded-0'>Show</button>
-    </div>
-
-    <div class="col-9 pe-0">
-        <div class="products">
-            <div class="row d-flex align-items-center justify-content-between flex-wrap">
-                @foreach($products as $product)
-                <div class="card rounded-0 col-lg-4 productcard">
-                    <div class="productImage overflow-hidden">
-                        <a href="product/{{ $product->id }}">
-                            <img src="{{ $product->image }}" class="card-img-top" alt="Image of {{ $product->name }}">
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $product->name }}</h5>
-                        <p class="card-text">{{ $product->description}}</p>
-                        <a href="#" class="btn btn-outline-dark rounded-0">Add to cart</a>
-                        <a href="#" class="btn btn-success rounded-0">Buy Now</a>
-                    </div>
+                @foreach($Categories as $category)
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="category" value="{{ $category->id }}"
+                        {{ request('category') == $category->id ? 'checked' : '' }}>
+                    <label class="form-check-label">{{ $category->name }}</label>
                 </div>
                 @endforeach
+
+                <hr>
+
+                <p class='fs-4'>Sort by</p>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="sort" value="discount"
+                        {{ request('sort')=='discount' ? 'checked' : '' }}>
+                    <label class="form-check-label">Discount</label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="sort" value="low_price"
+                        {{ request('sort')=='low_price' ? 'checked' : '' }}>
+                    <label class="form-check-label">Low Price</label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="sort" value="high_price"
+                        {{ request('sort')=='high_price' ? 'checked' : '' }}>
+                    <label class="form-check-label">High Price</label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="sort" value="stock"
+                        {{ request('sort')=='stock' ? 'checked' : '' }}>
+                    <label class="form-check-label">Stock</label>
+                </div>
+
+                <hr>
+
+                <p class='fs-4'>Price</p>
+
+                <input type="range" class="form-range" name="price" min="0" max="10000"
+                    value="{{ request('price', 10000) }}" id="range4">
+                <output id="rangeValue">{{ request('price', 10000) }} ₹</output>
+
+                <hr>
+
+                <div class="d-flex gap-2">
+                    <button class='btn btn-dark rounded-0 w-100'>Show</button>
+                    <a href="{{ route('products') }}" class="btn btn-outline-dark rounded-0 w-100">Clear</a>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-lg-9 col-md-12">
+            <div class="products">
+                @if ($products->count() > 0)
+                <h1 class="mt-2 text-center">Products</h1>
+                <p class="mt-2 text-center">Discover our wide range of products</p>
+                @endif
+
+                <div class="row g-1">
+                    @forelse($products as $product)
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                        <div class="card rounded-0 productcard h-100">
+                            <div class="productImage overflow-hidden">
+                                <a href="product/{{ $product->id }}">
+                                    <img src="{{ $product->image }}" class="card-img-top"
+                                        alt="Image of {{ $product->name }}">
+                                </a>
+                            </div>
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">{{ $product->name }}</h5>
+                                <p class="card-text">{{ $product->description }}</p>
+                                <p class="card-price mt-auto">
+                                    <span class="fw-bold fs-5">{{ $product->price }} &#8377;</span>
+                                    &nbsp;&nbsp;<del>{{ $product->sale_price }} &#8377;</del>
+                                </p>
+                                <p class="card-discount">{{ $product->discount }} % off</p>
+
+                                <div class="d-flex gap-2">
+                                    <form action="{{ route('cart.add', $product->id) }}" method="POST" class="w-100">
+                                        @csrf
+                                        <button type="submit" class="btn btn-outline-dark rounded-0 w-100">
+                                            Add to cart
+                                        </button>
+                                    </form>
+                                    <a href="#" class="btn btn-success rounded-0 w-100">Buy Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @empty
+                    <div class="col-12 text-center py-5">
+                        <h3>No products found.</h3>
+                        <p>Try adjusting your filters or search term.</p>
+                    </div>
+                    @endforelse
+                </div>
+
             </div>
         </div>
+
     </div>
 </div>
+
 @endsection
 
 @push('scripts')

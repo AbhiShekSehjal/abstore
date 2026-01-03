@@ -1,7 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
@@ -14,4 +16,47 @@ class CartController extends Controller
             return redirect()->route('LoginPage');
         }
     }
+
+    public function add($id)
+    {
+        if (! Auth::check()) {
+            return redirect()->route('LoginPage');
+        }
+
+        $product = Product::findOrFail($id);
+
+        // order_status
+        $order = Order::where('user_id', Auth::id())
+            ->where('order_status', 'cart')
+            ->first();
+
+        if (! $order) {
+            $order = Order::create([
+                'user_id'        => Auth::id(),
+                'order_status'   => 'cart',
+                'payment_status' => 'pending',
+                'total'          => 0,
+            ]);
+        }
+
+        // Add / update item
+        $item = OrderItem::where('order_id', $order->id)
+            ->where('product_id', $product->id)
+            ->first();
+
+        if ($item) {
+            $item->quantity += 1;
+            $item->save();
+        } else {
+            OrderItem::create([
+                'order_id'   => $order->id,
+                'product_id' => $product->id,
+                'quantity'   => 1,
+                'price'      => $product->price,
+            ]);
+        }
+
+        return back()->with('success', 'Product added to cart');
+    }
+
 }

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-white">
+<nav class="navbar navbar-expand-lg bg-white sticky-top shadow-sm">
     <div class="container px-0">
         <a class="navbar-brand" href="/"><img
                 src="https://res.cloudinary.com/djmmx0tri/image/upload/v1763620634/Group_1_rlhqbh.png"
@@ -15,9 +15,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/about">About</a>
                 </li>
-                <!-- <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href="/contact">Contact</a>
-                </li> -->
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/products">Products</a>
                 </li>
@@ -25,11 +25,21 @@
                     <a class="nav-link" href="/cart">Cart</a>
                 </li>
             </ul>
-            <!-- <a class="nav-link ms-auto" href="/profile">
-                <img src="https://res.cloudinary.com/djmmx0tri/image/upload/v1753439425/samples/man-portrait.jpg" class='userProfilePic' alt="userProfilePic">
-            </a> -->
+
+            <form class="d-flex ms-auto my-2" role="search" action="/products" method="GET">
+                <input class="form-control me-2 rounded-0" type="search" placeholder="Search" aria-label="Search"
+                    name="search" value="{{ request('search') }}">
+                <button class="btn btn-outline-dark rounded-0" type="submit">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-search" viewBox="0 0 16 16">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                    </svg>
+                </button>
+            </form>
+
             <a class="nav-link ms-auto" href="/profile">
-               Welcome, {{ Auth::user()->name }}
+                Welcome, {{ Auth::user()->name }}
             </a>
         </div>
     </div>

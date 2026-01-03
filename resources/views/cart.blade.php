@@ -8,4 +8,4 @@
     <img src="https://res.cloudinary.com/djmmx0tri/image/upload/v1763708581/shopping_wsmji6.png" alt="" width='300' height='300'>
 </div>
 
-@endsection
+@endsection 
