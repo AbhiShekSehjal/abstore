@@ -151,7 +151,6 @@
 
 <div id="main-slider" class="splide mt-5 mb-5" aria-label="Main Slider">
     <div class="splide__track">
-
         <ul class="splide__list">
             @forelse($categories as $category)
             <li class="splide__slide">
