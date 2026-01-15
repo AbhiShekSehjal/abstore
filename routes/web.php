@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AdminOrdersController;
 use App\Http\Controllers\Admin\AdminProductsController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminUsersController;
+use App\Http\Controllers\Admin\AdminSettingsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
@@ -54,11 +55,19 @@ Route::get('admin/index', [AdminIndexController::class, 'index'])->name('AdminHo
 
 Route::get('admin/profile', [AdminProfileController::class, 'index']);
 
-Route::get('admin/categories', [AdminCategoriesController::class, 'index']);
+Route::get('admin/categories', [AdminCategoriesController::class, 'index'])->name('admin.categories');
 
-Route::get('admin/products', [AdminProductsController::class, 'index']);
+Route::post('admin/categories/add', [AdminCategoriesController::class, 'add'])->name('categories.add');
+
+Route::get('admin/products', [AdminProductsController::class, 'index'])->name('admin.products');
+
+Route::post('admin/products/add', [AdminProductsController::class, 'add'])->name('products.add');
 
 Route::get('admin/orders', [AdminOrdersController::class, 'index']);
+
+Route::get('admin/settings', [AdminSettingsController::class, 'index']);
+
+Route::post('admin/settings/update', [AdminSettingsController::class, 'update'])->name('settings.update');
 
 Route::get('admin/users', [AdminUsersController::class, 'index']);
 

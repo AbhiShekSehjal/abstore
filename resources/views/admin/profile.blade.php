@@ -1,6 +1,6 @@
 @extends('layouts.admin.main')
 
-@section('title', 'Home')
+@section('title', 'Profile')
 
 <!-- @push('styles')
 

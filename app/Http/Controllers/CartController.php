@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\admin\Setting;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
@@ -11,7 +12,9 @@ class CartController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            return view('cart');
+            $settings = Setting::first();
+            
+            return view('cart', compact('settings'));
         } else {
             return redirect()->route('LoginPage');
         }

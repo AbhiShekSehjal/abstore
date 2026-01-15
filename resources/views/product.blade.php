@@ -97,7 +97,11 @@
                 <div class="card rounded-0 productcard h-100">
                     <div class="productImage overflow-hidden">
                         <a href="product/{{ $product->id }}">
-                            <img src="{{ $product->image }}" class="card-img-top" alt="Image of {{ $product->name }}">
+                       @if($product->image)
+                        <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top">
+                        @else
+                        <img src="{{ asset('images/no-image.png') }}" class="card-img-top">
+                        @endif
                         </a>
                     </div>
                     <div class="card-body d-flex flex-column">

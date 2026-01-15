@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\admin\Setting;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -11,6 +12,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $Categories = Category::all();
+        $settings = Setting::first();
 
         $query = Product::query();
 
@@ -42,7 +44,7 @@ class ProductController extends Controller
 
         $products = $query->get();
 
-        return view('products', compact('products', 'Categories'));
+        return view('products', compact('products', 'Categories', 'settings'));
     }
 
 }

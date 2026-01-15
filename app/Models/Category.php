@@ -9,6 +9,7 @@ class Category extends Model
         'name',
         'slug',
         'description',
+        'category_image',
     ];
 
     public function products(){

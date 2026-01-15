@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\admin\Setting;
 use Illuminate\Support\Facades\Auth;
 
 class ContactController extends Controller
@@ -9,7 +10,9 @@ class ContactController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            return view('contact');
+            $settings = Setting::first();
+
+            return view('contact', compact('settings'));
         } else {
             return redirect()->route('LoginPage');
         }

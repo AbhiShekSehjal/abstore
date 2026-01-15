@@ -1,39 +1,39 @@
 @extends('layouts.main')
 
-@section('title', 'Home')
+@section('title', 'About')
 
 @push('styles')
 <style>
-.aboutUsContainer {
-    margin-top: 100px;
-}
+    .aboutUsContainer {
+        margin-top: 100px;
+    }
 
-.heroContainer {
-    background: #000;
-}
+    .heroContainer {
+        background: #000;
+    }
 
-.aboutUsHeading {
-    font-size: 120px;
-    font-weight: 600;
-    position: relative;
-    top: -72px;
-    right: -45px;
-    mix-blend-mode: difference;
-    color: white;
-    margin-bottom: 0;
-}
+    .aboutUsHeading {
+        font-size: 120px;
+        font-weight: 600;
+        position: relative;
+        top: -72px;
+        right: -45px;
+        mix-blend-mode: difference;
+        color: white;
+        margin-bottom: 0;
+    }
 
-.aboutUsText {
-    color: white;
-    position: relative;
-    top: -60px;
-}
+    .aboutUsText {
+        color: white;
+        position: relative;
+        top: -60px;
+    }
 
-.abstoreMockup{
-    width: 100%;
-    height: 60vh;
-    object-fit: cover;
-}
+    .abstoreMockup {
+        width: 100%;
+        height: 60vh;
+        object-fit: cover;
+    }
 </style>
 @endpush
 

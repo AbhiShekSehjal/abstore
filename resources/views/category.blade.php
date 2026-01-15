@@ -1,42 +1,42 @@
 @extends('layouts.main')
 
-@section('title', 'Home')
+@section('title', 'Category')
 
 @push('styles')
 <style>
-.productcard {
-    border: none;
-    border: 1px solid white;
-    overflow: hidden;
-    padding: 0;
-}
+    .productcard {
+        border: none;
+        border: 1px solid white;
+        overflow: hidden;
+        padding: 0;
+    }
 
 
-.card {
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-}
+    .card {
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    }
 
-.card-body {
-    padding-bottom: 30px;
-}
+    .card-body {
+        padding-bottom: 30px;
+    }
 
-.card-img-top {
-    height: 400px;
-    object-fit: cover;
-    border-radius: 0px;
-}
+    .card-img-top {
+        height: 400px;
+        object-fit: cover;
+        border-radius: 0px;
+    }
 
-.productcard:hover .card-img-top {
-    transform: scale(1.06);
-    transition: all 0.5s ease;
-}
+    .productcard:hover .card-img-top {
+        transform: scale(1.06);
+        transition: all 0.5s ease;
+    }
 
-.card-text {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
+    .card-text {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
 </style>
 @endpush
 
@@ -53,7 +53,11 @@
             <div class="card rounded-0 productcard h-100">
                 <div class="productImage overflow-hidden">
                     <a href="product/{{ $item->id }}">
-                        <img src="{{ $item->image }}" class="card-img-top" alt="Image of {{ $item->name }}">
+                        @if($item->image)
+                        <img src="{{ asset('storage/' . $item->image) }}" class="card-img-top">
+                        @else
+                        <img src="{{ asset('images/no-image.png') }}" class="card-img-top">
+                        @endif
                     </a>
                 </div>
                 <div class="card-body d-flex flex-column">

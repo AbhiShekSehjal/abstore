@@ -1,9 +1,13 @@
 <footer class="container footerContainer mt-5 border-top">
     <div class="row py-4">
         <div class="col-lg-6 col-md-6 col-sm-12 p-0">
-            <a class="navbar-brand heading-font fs-3 fw-bold" href="/"><img
-                    src="https://res.cloudinary.com/djmmx0tri/image/upload/v1763620634/Group_1_rlhqbh.png"
-                    alt="abstore-logo" width='150'></a>
+            <a class="navbar-brand heading-font fs-3 fw-bold" href="/">
+                @if($settings->logo)
+            <img
+                src="{{ asset('storage/' . $settings->logo) }}"
+                alt="abstore-logo" width='150'>
+            @endif
+                </a>
 
             <p class="opacity-75 footerPera mt-3 w-75"><small>We believe that shopping should be simple and fun, and
                     that's exactly what we work for every day. Welcome to Abstore — your one-stop shop for everything

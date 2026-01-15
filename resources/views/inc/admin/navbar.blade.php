@@ -10,7 +10,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/admin/index">Home</a>
+                    <a class="nav-link" aria-current="page" href="/admin/index">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/admin/products">Products</a>
@@ -18,10 +18,18 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/admin/categories">Category</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/settings">Settings</a>
+                </li>
             </ul>
-            <a class="nav-link ms-auto" href="/admin/profile">
+
+            <a class="userName ms-auto" href="/admin/profile">
                 Welcome, {{ Auth::user()->name }}
             </a>
+
+            <div id="themeToggle" class="ms-auto">
+                🌙
+            </div>
         </div>
     </div>
 </nav>

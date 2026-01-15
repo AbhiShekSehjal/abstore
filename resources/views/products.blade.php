@@ -4,52 +4,52 @@
 
 @push('styles')
 <style>
-.products {
-    overflow: hidden;
-}
+    .products {
+        overflow: hidden;
+    }
 
-.productcard {
-    border: none;
-    border: 1px solid white;
-    overflow: hidden;
-    padding: 0;
-}
+    .productcard {
+        border: none;
+        border: 1px solid white;
+        overflow: hidden;
+        padding: 0;
+    }
 
-.card {
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-}
+    .card {
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    }
 
-.card-body {
-    padding-bottom: 30px;
-}
+    .card-body {
+        padding-bottom: 30px;
+    }
 
-.card-img-top {
-    height: 400px;
-    object-fit: cover;
-    border-radius: 0 !important;
+    .card-img-top {
+        height: 400px;
+        object-fit: cover;
+        border-radius: 0 !important;
 
-}
+    }
 
-.productcard:hover .card-img-top {
-    transform: scale(1.06);
-    transition: all 0.5s ease;
-}
+    .productcard:hover .card-img-top {
+        transform: scale(1.06);
+        transition: all 0.5s ease;
+    }
 
-.card-text {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
+    .card-text {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
 
-.form-check-input[type=radio] {
-    border-radius: 0;
-}
+    .form-check-input[type=radio] {
+        border-radius: 0;
+    }
 
-.filterSection {
-    position: sticky;
-    top: 80px;
-}
+    .filterSection {
+        position: sticky;
+        top: 80px;
+    }
 </style>
 @endpush
 
@@ -72,12 +72,12 @@
                 <b class='fs-4'>Filter</b>
                 <hr>
 
-                <p class='fs-4'>Products</p>
+                <p class='fs-4'>Categories</p>
 
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="category" value=""
                         {{ request('category') == null ? 'checked' : '' }}>
-                    <label class="form-check-label">All Products</label>
+                    <label class="form-check-label">All Categories</label>
                 </div>
 
                 @foreach($Categories as $category)
@@ -146,8 +146,11 @@
                         <div class="card rounded-0 productcard h-100">
                             <div class="productImage overflow-hidden">
                                 <a href="product/{{ $product->id }}">
-                                    <img src="{{ $product->image }}" class="card-img-top"
-                                        alt="Image of {{ $product->name }}">
+                                    @if($product->image)
+                                    <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top">
+                                    @else
+                                    <img src="{{ asset('images/no-image.png') }}" class="card-img-top">
+                                    @endif
                                 </a>
                             </div>
                             <div class="card-body d-flex flex-column">
@@ -189,13 +192,13 @@
 
 @push('scripts')
 <script>
-const rangeInput = document.getElementById('range4');
-const rangeOutput = document.getElementById('rangeValue');
+    const rangeInput = document.getElementById('range4');
+    const rangeOutput = document.getElementById('rangeValue');
 
-rangeOutput.textContent = rangeInput.value + " ₹";
+    rangeOutput.textContent = rangeInput.value + " ₹";
 
-rangeInput.addEventListener('input', function() {
-    rangeOutput.textContent = this.value + " ₹";
-});
+    rangeInput.addEventListener('input', function() {
+        rangeOutput.textContent = this.value + " ₹";
+    });
 </script>
 @endpush

@@ -1,8 +1,12 @@
 <nav class="navbar navbar-expand-lg bg-white sticky-top shadow-sm">
     <div class="container px-0">
-        <a class="navbar-brand" href="/"><img
-                src="https://res.cloudinary.com/djmmx0tri/image/upload/v1763620634/Group_1_rlhqbh.png"
-                alt="abstore-logo" width='150'></a>
+        <a class="navbar-brand" href="/">
+            @if($settings->logo)
+            <img
+                src="{{ asset('storage/' . $settings->logo) }}"
+                alt="abstore-logo" width='150'>
+            @endif
+        </a>
         <button class="navbar-toggler rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -38,9 +42,13 @@
                 </button>
             </form>
 
-            <a class="nav-link ms-auto" href="/profile">
+            <a class="userName ms-auto" href="/profile">
                 Welcome, {{ Auth::user()->name }}
             </a>
+
+            <div id="themeToggle" class="ms-auto">
+                🌙
+            </div>
         </div>
     </div>
 </nav>
