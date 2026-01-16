@@ -1,10 +1,12 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\admin\Setting;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
@@ -13,8 +15,13 @@ class CartController extends Controller
     {
         if (Auth::check()) {
             $settings = Setting::first();
-            
-            return view('cart', compact('settings'));
+            $products   = Product::inRandomOrder()->take(6)->get();
+            $order = Order::where('user_id', Auth::id())
+                ->where('order_status', 'cart')
+                ->with('items.product')
+                ->first();
+
+            return view('cart', compact('settings', 'order', 'products'));
         } else {
             return redirect()->route('LoginPage');
         }
@@ -62,4 +69,40 @@ class CartController extends Controller
         return back()->with('success', 'Product added to cart');
     }
 
+    public function increase(Request $request)
+    {
+        $item = OrderItem::findOrFail($request->item_id);
+        $item->quantity += 1;
+        $item->save();
+
+        return response()->json([
+            'quantity' => $item->quantity,
+            'item_total' => $item->quantity * $item->price
+        ]);
+    }
+
+    public function decrease(Request $request)
+    {
+        $item = OrderItem::findOrFail($request->item_id);
+
+        if ($item->quantity > 1) {
+            $item->quantity -= 1;
+            $item->save();
+        }
+
+        return response()->json([
+            'quantity' => $item->quantity,
+            'item_total' => $item->quantity * $item->price
+        ]);
+    }
+
+    public function remove(Request $request)
+    {
+        $item = OrderItem::findOrFail($request->item_id);
+        $item->delete();
+
+        return response()->json([
+            'status' => 'success'
+        ]);
+    }
 }

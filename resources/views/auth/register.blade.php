@@ -25,19 +25,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
 </head>
 
-<style>
-* {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 500;
-}
-</style>
-
 <body>
     <div class="container-fluid row d-flex align-items-center justify-content-center" style="height: 100vh; padding: 0; margin: 0;">
         <div class="col-lg-4 col-md-8 col-sm-12 shadow p-5 rounded-0 bg-white">
             <div class="d-flex align-items-center justify-content-center mb-4">
-                <img src="https://res.cloudinary.com/djmmx0tri/image/upload/v1763620634/Group_1_rlhqbh.png"
-                    alt="abstore-logo" width='100'>
+                @if($settings->logo)
+            <img
+                src="{{ asset('storage/' . $settings->logo) }}"
+                alt="abstore-logo" width='100'>
+            @endif
             </div>
 
             <form method="POST" action="{{ route('RegisterSave') }}">

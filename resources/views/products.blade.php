@@ -50,6 +50,10 @@
         position: sticky;
         top: 80px;
     }
+
+    label{
+        cursor: pointer;
+    }
 </style>
 @endpush
 
@@ -75,16 +79,16 @@
                 <p class='fs-4'>Categories</p>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="category" value=""
+                    <input class="form-check-input" type="radio" name="category" value="" id="all"
                         {{ request('category') == null ? 'checked' : '' }}>
-                    <label class="form-check-label">All Categories</label>
+                    <label class="form-check-label" for="all">All Categories</label>
                 </div>
 
                 @foreach($Categories as $category)
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="category" value="{{ $category->id }}"
+                    <input class="form-check-input" type="radio" name="category" value="{{ $category->id }}" id="{{ $category->name }}"
                         {{ request('category') == $category->id ? 'checked' : '' }}>
-                    <label class="form-check-label">{{ $category->name }}</label>
+                    <label class="form-check-label" for="{{ $category->name }}">{{ $category->name }}</label>
                 </div>
                 @endforeach
 
@@ -93,27 +97,27 @@
                 <p class='fs-4'>Sort by</p>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="sort" value="discount"
+                    <input class="form-check-input" type="radio" name="sort" value="discount" id="discount"
                         {{ request('sort')=='discount' ? 'checked' : '' }}>
-                    <label class="form-check-label">Discount</label>
+                    <label class="form-check-label" for="discount">Discount</label>
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="sort" value="low_price"
+                    <input class="form-check-input" type="radio" name="sort" value="low_price" id="lowPrice"
                         {{ request('sort')=='low_price' ? 'checked' : '' }}>
-                    <label class="form-check-label">Low Price</label>
+                    <label class="form-check-label" for="lowPrice">Low Price</label>
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="sort" value="high_price"
+                    <input class="form-check-input" type="radio" name="sort" value="high_price" id="highPrice"
                         {{ request('sort')=='high_price' ? 'checked' : '' }}>
-                    <label class="form-check-label">High Price</label>
+                    <label class="form-check-label" for="highPrice">High Price</label>
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="sort" value="stock"
+                    <input class="form-check-input" type="radio" name="sort" value="stock" id="stock"
                         {{ request('sort')=='stock' ? 'checked' : '' }}>
-                    <label class="form-check-label">Stock</label>
+                    <label class="form-check-label" for="stock">Stock</label>
                 </div>
 
                 <hr>

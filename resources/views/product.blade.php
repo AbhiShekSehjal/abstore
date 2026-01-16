@@ -47,7 +47,7 @@
 @section('content')
 <div class="row flex-wrap my-5">
     <div class="col-lg-6">
-        <img src="{{ $product->image }}" alt="Image of {{ $product->name }}" class='rounded-5 w-100'>
+        <img src="{{ asset('storage/' . $product->image) }}" alt="Image of {{ $product->name }}" class='rounded-5 w-100'>
     </div>
 
     <div class="col-lg-6">

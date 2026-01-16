@@ -70,24 +70,7 @@
     .showMoreBtn:hover {
         border: 2px solid;
     }
-
-    /* .thirdSection {
-        background: grey;
-        padding: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        gap: 20px;
-        flex-wrap: wrap;
-    } */
-
-    /* .thirdSectionRightSideText {
-        font-size: 60px;
-        font-weight: 600;
-        font-family: "Jost", sans-serif;
-        color: white;
-    } */
-
+    
     .productcard {
         border: none;
         border: 1px solid white;
@@ -244,7 +227,7 @@
 </div>
 
 @if($settings->Section_3_Image)
-<section class="thirdSection p-5">
+<section class="thirdSection p-5 mb-5">
     <div class="container">
         <div class="row align-items-center g-4">
 
@@ -343,6 +326,7 @@
         interval: 2000,
         pauseOnHover: true,
         pauseOnFocus: true,
+        arrows: false,
     });
 
     categorySlider.mount();

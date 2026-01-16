@@ -27,11 +27,11 @@ class AdminSettingsController extends Controller
     {
         // Validate uploaded images
         $validated = $request->validate([
-            'slider_image_1' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'slider_image_2' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'slider_image_3' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'Section_3_Image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'slider_image_1' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'slider_image_2' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'slider_image_3' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'Section_3_Image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
             'main_heading' => 'nullable|string',
             'main_pera' => 'nullable|string',
             'Section_3_Text' => 'nullable|string',

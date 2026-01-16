@@ -1,7 +1,9 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\admin\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,12 +12,14 @@ class AuthController extends Controller
 {
     public function registerPage()
     {
-        return view('auth.register');
+        $settings = Setting::first();
+        return view('auth.register', compact('settings'));
     }
 
     public function loginPage()
     {
-        return view('auth.login');
+        $settings = Setting::first();
+        return view('auth.login', compact('settings'));
     }
 
     public function register(Request $request)
@@ -51,7 +55,6 @@ class AuthController extends Controller
                 return back()->withErrors([
                     'email' => "Only customers can login!",
                 ])->onlyInput('email');
-
             }
 
             return redirect()->route('Home');

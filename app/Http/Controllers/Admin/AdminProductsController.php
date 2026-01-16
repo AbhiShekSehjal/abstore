@@ -15,9 +15,11 @@ class AdminProductsController extends Controller
     {
         if (Auth::check()) {
             $categories = Category::all();
+            $products = Product::all();
 
 
-            return view('admin.products', compact('categories'));
+
+            return view('admin.products', compact('categories', 'products'));
         } else {
             return redirect()->route('AdminLoginPage');
         }
@@ -28,10 +30,13 @@ class AdminProductsController extends Controller
         $request->validate([
             'name' => 'required|string',
             'category_id' => 'required|exists:categories,id',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
 
         $imagePath = null;
+
+        $discountValue = ($request->price * $request->discount) / 100;
+        $calaculatedValue = $request->price + $discountValue;
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')
@@ -44,7 +49,8 @@ class AdminProductsController extends Controller
             'category_id' => $request->category_id,
             'description' => $request->description,
             'price' => $request->price,
-            'sale_price' => $request->sale_price,
+            'discount' => $request->discount,
+            'sale_price' => $calaculatedValue,
             'stock' => $request->stock,
             'image' => $imagePath,
         ]);

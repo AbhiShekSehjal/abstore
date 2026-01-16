@@ -24,16 +24,16 @@ class IndexController extends Controller
         }
     }
 
-    // public function show($id)
-    // {
-    //     $product = Product::findOrFail($id);
+    public function show($id)
+    {
+        $product = Product::findOrFail($id);
+        $settings = Setting::first();
 
-    //     $products = Product::where('category_id', $product->category_id)
-    //         ->where('id', '!=', $product->id)
-    //         ->take(6)
-    //         ->get();
+        $products = Product::where('category_id', $product->category_id)
+            ->where('id', '!=', $product->id)
+            ->take(6)
+            ->get();
 
-    //     return view('product', compact('product', 'products'));
-    // }
-
+        return view('product', compact('product', 'products', 'settings'));
+    }
 }

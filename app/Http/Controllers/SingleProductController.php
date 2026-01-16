@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
@@ -13,4 +14,5 @@ class SingleProductController extends Controller
         // $categories = Category::all();
         return view('product', compact('products'));
     }
+
 }

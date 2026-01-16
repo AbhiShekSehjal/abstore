@@ -13,7 +13,9 @@ class AdminCategoriesController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            return view('admin.categories');
+            $categories = Category::all();
+
+            return view('admin.categories', compact('categories'));
         } else {
             return redirect()->route('AdminLoginPage');
         }
@@ -24,7 +26,7 @@ class AdminCategoriesController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:255',
-            'category_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'category_image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048'
         ]);
 
         $imagePath = null;

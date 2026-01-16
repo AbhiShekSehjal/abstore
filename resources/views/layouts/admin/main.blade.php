@@ -91,7 +91,6 @@
         .adminProfilePic {
             width: 60px !important;
             height: 60px !important;
-            /* border-radius: 50% !important; */
             object-fit: cover;
             border: 0.5px solid grey;
         }
@@ -142,15 +141,6 @@
             });
         });
     </script>
-
-    @if($errors->any())
-    <script>
-        const modal = new bootstrap.Modal(
-            document.getElementById('addCategoryModal')
-        );
-        modal.show();
-    </script>
-    @endif
 
     @stack('scripts')
 
