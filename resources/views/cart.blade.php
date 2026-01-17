@@ -69,12 +69,13 @@
                         View Customizations
                     </a> -->
                     <a href="javascript:void(0)"
-                        class="text-dark fs-4 remove-item"
+                        class="text-dark fs-6 remove-item"
                         data-id="{{ $item->id }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                             fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
                             <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
-                        </svg>
+                        </svg> -->
+                        Remove
                     </a>
 
                 </div>
@@ -133,11 +134,11 @@
                     <span>₹ {{ number_format($subtotal, 2) }}</span>
                 </div>
 
-                <button class="btn btn-dark w-100 mt-4 py-3 rounded-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M8 0a4 4 0 0 1 4 4v2.05a2.5 2.5 0 0 1 2 2.45v5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5v-5a2.5 2.5 0 0 1 2-2.45V4a4 4 0 0 1 4-4M4.5 7A1.5 1.5 0 0 0 3 8.5v5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5v-5A1.5 1.5 0 0 0 11.5 7zM8 1a3 3 0 0 0-3 3v2h6V4a3 3 0 0 0-3-3" />
-                    </svg> CHECKOUT
-                </button>
+                <a href="{{ route('checkout.index') }}">
+                    <button class="btn btn-dark w-100 mt-4 py-3 rounded-0">
+                        CHECKOUT
+                    </button>
+                </a>
             </div>
         </div>
     </div>

@@ -28,6 +28,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/cart">Cart</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/orders">My Orders</a>
+                </li>
             </ul>
 
             <form class="d-flex ms-auto my-2" role="search" action="/products" method="GET">

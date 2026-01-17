@@ -70,9 +70,13 @@
                     </p>
                     <p class="card-discount">{{ $item->discount }} % off</p>
 
-
                     <div class="d-flex gap-2">
-                        <a href="#" class="btn btn-outline-dark rounded-0 w-100">Add to cart</a>
+                        <form action="{{ route('cart.add', $product->id) }}" method="POST" class="w-100">
+                            @csrf
+                            <button type="submit" class="btn btn-outline-dark rounded-0 w-100">
+                                Add to cart
+                            </button>
+                        </form>
                         <a href="#" class="btn btn-success rounded-0 w-100">Buy Now</a>
                     </div>
                 </div>

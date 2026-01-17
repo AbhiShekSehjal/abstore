@@ -12,8 +12,10 @@ use App\Http\Controllers\Admin\AdminSettingsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -30,7 +32,7 @@ Route::get('/about', [AboutController::class, 'index']);
 
 Route::get('/contact', [ContactController::class, 'index']);
 
-Route::get('/cart', [CartController::class, 'index']);
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 
 Route::post('/cart/increase', [CartController::class, 'increase'])->name('cart.increase');
 
@@ -40,6 +42,10 @@ Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remov
 
 Route::post('/add-to-cart/{id}', [CartController::class, 'add'])
     ->name('cart.add');
+
+Route::get('/orders', [OrdersController::class, 'index']);
+
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
 
 Route::get('/category/{id}', [CategoryController::class, 'show']);
 
@@ -70,6 +76,12 @@ Route::get('/admin/products', [AdminProductsController::class, 'index'])->name('
 Route::post('/admin/products/add', [AdminProductsController::class, 'add'])->name('products.add');
 
 Route::get('/admin/orders', [AdminOrdersController::class, 'index']);
+
+Route::put('/orders/{order}/payment-status', [AdminOrdersController::class, 'updatePaymentStatus'])
+    ->name('orders.updatePaymentStatus');
+
+Route::put('/orders/{order}/order-status', [AdminOrdersController::class, 'updateOrderStatus'])
+    ->name('orders.updateOrderStatus');
 
 Route::get('/admin/settings', [AdminSettingsController::class, 'index']);
 

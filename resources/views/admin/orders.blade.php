@@ -29,8 +29,46 @@
             <tr>
                 <td>{{$order->user_id}}</td>
                 <td>{{$order->total}}</td>
-                <td>{{$order->payment_status}}</td>
-                <td>{{$order->order_status}}</td>
+
+                <td>
+                    <form action="{{ route('orders.updatePaymentStatus', $order->id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+
+                        <select name="payment_status"
+                            class="form-select form-select-sm"
+                            onchange="this.form.submit()">
+
+                            <option value="pending" {{ $order->payment_status == 'pending' ? 'selected' : '' }}>Pending</option>
+                            <option value="paid" {{ $order->payment_status == 'paid' ? 'selected' : '' }}>Paid</option>
+                            <option value="failed" {{ $order->payment_status == 'failed' ? 'selected' : '' }}>Failed</option>
+
+                        </select>
+                    </form>
+                </td>
+
+
+                <td>
+                    <form action="{{ route('orders.updateOrderStatus', $order->id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+
+                        <select name="order_status"
+                            class="form-select form-select-sm"
+                            onchange="this.form.submit()">
+
+                            <option value="cart" {{ $order->order_status == 'cart' ? 'selected' : '' }}>Cart</option>
+                            <option value="pending" {{ $order->order_status == 'pending' ? 'selected' : '' }}>Pending</option>
+                            <option value="confirmed" {{ $order->order_status == 'confirmed' ? 'selected' : '' }}>Confirmed</option>
+                            <option value="shipped" {{ $order->order_status == 'shipped' ? 'selected' : '' }}>Shipped</option>
+                            <option value="delivered" {{ $order->order_status == 'delivered' ? 'selected' : '' }}>Delivered</option>
+                            <option value="cancelled" {{ $order->order_status == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
+
+                        </select>
+                    </form>
+                </td>
+
+
                 @empty
                 <div class="text-center">
                     <h3>No Order Found.</h3>

@@ -4,43 +4,43 @@
 
 @push('styles')
 <style>
-.productcard {
-    border: none;
-    border: 1px solid white;
-    overflow: hidden;
-    padding: 0;
-}
+    .productcard {
+        border: none;
+        border: 1px solid white;
+        overflow: hidden;
+        padding: 0;
+    }
 
-.card-img-top {
-    height: 400px;
-    object-fit: cover;
-    border-radius: 0px;
-}
+    .card-img-top {
+        height: 400px;
+        object-fit: cover;
+        border-radius: 0px;
+    }
 
-.card {
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-}
+    .card {
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    }
 
-.card-body {
-    padding-bottom: 30px;
-}
+    .card-body {
+        padding-bottom: 30px;
+    }
 
-.productcard:hover .card-img-top {
-    transform: scale(1.06);
-    transition: all 0.5s ease;
-}
+    .productcard:hover .card-img-top {
+        transform: scale(1.06);
+        transition: all 0.5s ease;
+    }
 
-.productHeading {
-    font-size: 40px;
-    text-align: center;
-}
+    .productHeading {
+        font-size: 40px;
+        text-align: center;
+    }
 
-.card-text {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
+    .card-text {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
 </style>
 @endpush
 
@@ -74,8 +74,15 @@
 
         <hr>
 
-        <button class='btn btn-lg btn-outline-dark rounded-0 px-4 py-2'>Add to cart</button>
-        <button class='btn btn-lg btn-success rounded-0 px-4 py-2'>Buy Now</button>
+        <div class="d-flex gap-2">
+            <form action="{{ route('cart.add', $product->id) }}" method="POST" class="w-100">
+                @csrf
+                <button type="submit" class="btn btn-outline-dark rounded-0 w-100">
+                    Add to cart
+                </button>
+            </form>
+            <a href="#" class="btn btn-success rounded-0 w-100">Buy Now</a>
+        </div>
 
     </div>
 </div>
@@ -97,11 +104,11 @@
                 <div class="card rounded-0 productcard h-100">
                     <div class="productImage overflow-hidden">
                         <a href="product/{{ $product->id }}">
-                       @if($product->image)
-                        <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top">
-                        @else
-                        <img src="{{ asset('images/no-image.png') }}" class="card-img-top">
-                        @endif
+                            @if($product->image)
+                            <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top">
+                            @else
+                            <img src="{{ asset('images/no-image.png') }}" class="card-img-top">
+                            @endif
                         </a>
                     </div>
                     <div class="card-body d-flex flex-column">
@@ -116,7 +123,12 @@
 
 
                         <div class="d-flex gap-2">
-                            <a href="#" class="btn btn-outline-dark rounded-0 w-100">Add to cart</a>
+                            <form action="{{ route('cart.add', $product->id) }}" method="POST" class="w-100">
+                                @csrf
+                                <button type="submit" class="btn btn-outline-dark rounded-0 w-100">
+                                    Add to cart
+                                </button>
+                            </form>
                             <a href="#" class="btn btn-success rounded-0 w-100">Buy Now</a>
                         </div>
                     </div>
