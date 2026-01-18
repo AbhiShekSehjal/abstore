@@ -43,9 +43,18 @@ Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remov
 Route::post('/add-to-cart/{id}', [CartController::class, 'add'])
     ->name('cart.add');
 
-Route::get('/orders', [OrdersController::class, 'index']);
+Route::get('/orders', [OrdersController::class, 'index'])->name('orders.track');
+
+Route::post('/orders/{order}/feedback', [OrdersController::class, 'submitFeedback'])->name('orders.submitFeedback');
 
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+
+Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
+
+Route::get('/buy-now/{product}', [CheckoutController::class, 'buyNow'])->name('buy.now');
+
+Route::put('/orders/{order}/address', [CheckoutController::class, 'updateAddress'])
+    ->name('orders.updateAddress');
 
 Route::get('/category/{id}', [CategoryController::class, 'show']);
 

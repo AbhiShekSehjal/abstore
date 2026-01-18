@@ -9,7 +9,17 @@ class Order extends Model
         'user_id',
         'total',
         'payment_status',
+        'payment_method',
         'order_status',
+        'name',
+        'phone',
+        'email',
+        'address',
+        'city',
+        'state',
+        'pincode',
+        'feedback',
+        'rating',
     ];
 
     public function items()

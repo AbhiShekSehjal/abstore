@@ -30,11 +30,6 @@
         transition: all 0.5s ease;
     }
 
-    .productHeading {
-        font-size: 40px;
-        text-align: center;
-    }
-
     .card-text {
         display: -webkit-box;
         -webkit-line-clamp: 1;
@@ -81,7 +76,7 @@
                     Add to cart
                 </button>
             </form>
-            <a href="#" class="btn btn-success rounded-0 w-100">Buy Now</a>
+            <a href="{{ route('buy.now', $product->id) }}" class="btn btn-success rounded-0 w-100">Buy Now</a>
         </div>
 
     </div>
@@ -92,7 +87,7 @@
 </div>
 
 <div class="forthSection overflow-hidden">
-    <h1 class='productHeading'>Related Products</h1>
+    <h1 class='mb-2 mt-2 text-center'>Related Products</h1>
     <p class="mt-2 text-center mb-5">Products which are related to this product</p>
 
     <div class="products">
@@ -129,7 +124,7 @@
                                     Add to cart
                                 </button>
                             </form>
-                            <a href="#" class="btn btn-success rounded-0 w-100">Buy Now</a>
+                            <a href="{{ route('buy.now', $product->id) }}" class="btn btn-success rounded-0 w-100">Buy Now</a>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-<footer class="container footerContainer mt-5 border-top z-100">
+<footer class="container footerContainer mt-5 border-top">
     <div class="row py-4">
         <div class="col-lg-6 col-md-6 col-sm-12 p-0">
             <a class="navbar-brand heading-font fs-3 fw-bold" href="/">

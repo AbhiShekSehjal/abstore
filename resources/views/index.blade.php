@@ -300,7 +300,7 @@
                                 Add to cart
                             </button>
                         </form>
-                        <a href="#" class="btn btn-success rounded-0 w-100">Buy Now</a>
+                        <a href="{{ route('buy.now', $product->id) }}" class="btn btn-success rounded-0 w-100">Buy Now</a>
                     </div>
                 </div>
             </div>
