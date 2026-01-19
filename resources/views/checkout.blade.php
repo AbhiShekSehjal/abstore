@@ -113,10 +113,67 @@
         margin-top: 4px;
         display: block;
     }
+
+    .ORcodeBox {
+        height: 300px;
+        width: 300px;
+    }
+
+    /* Loader Styles */
+    .payment-loader {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .payment-loader.show {
+        display: flex;
+    }
+
+    .spinner {
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #6f42c1;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .loader-text {
+        color: white;
+        margin-top: 20px;
+        font-size: 16px;
+        font-weight: 500;
+    }
 </style>
 @endpush
 
 @section('content')
+
+<!-- Payment Loader -->
+<div id="paymentLoader" class="payment-loader">
+    <div class="spinner"></div>
+    <div class="loader-text">Initializing Razorpay Payment...</div>
+</div>
+
 <div class="container py-4">
 
     <div class="row g-4">
@@ -294,7 +351,7 @@
                             <div class="payment-box w-100">
 
                                 <!-- COD -->
-                                <label class="payment-card">
+                                <label class="payment-card rounded-0">
                                     <input
                                         type="radio"
                                         name="payment_method"
@@ -312,7 +369,7 @@
                                     </div>
                                 </label>
 
-                                <label class="payment-card">
+                                <label class="payment-card rounded-0">
                                     <input
                                         type="radio"
                                         name="payment_method"
@@ -320,16 +377,12 @@
                                         class="payment d-none"
                                         {{ old('payment_method') === 'online' ? 'checked' : '' }}>
 
-                                    <div class="card-inner">
+                                    <div class="card-inner" id="payBtn">
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div>
                                                 <strong>Pay Online</strong>
                                             </div>
                                             <span class="radio-dot"></span>
-                                        </div>
-
-                                        <div class="qr-box d-none mt-3 text-center">
-                                            <img src="{{ asset('images/qr.png') }}" width="160">
                                         </div>
                                     </div>
                                 </label>
@@ -385,6 +438,9 @@
     </div>
 </div>
 
+<!-- Razorpay Payment Gateway Script -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
 <!-- JS -->
 <script>
     document.querySelectorAll('.payment').forEach(el => {
@@ -398,20 +454,23 @@
     });
 
     document.querySelectorAll('.payment-card').forEach(card => {
-        card.addEventListener('click', function() {
+        card.addEventListener('click', function(e) {
+            // Don't trigger if clicking on the radio input directly
+            if (e.target.type === 'radio') {
+                return;
+            }
 
             document.querySelectorAll('.payment-card').forEach(c => c.classList.remove('active'));
-
             this.classList.add('active');
 
-            this.querySelector('input').checked = true;
+            const radioInput = this.querySelector('input[type="radio"]');
+            radioInput.checked = true;
 
-            document.querySelectorAll('.qr-box').forEach(q => q.classList.add('d-none'));
-
-            if (this.querySelector('input').value === 'online') {
-                this.querySelector('.qr-box').classList.remove('d-none');
-            }
-            validateForm();
+            // Trigger change event on the radio input
+            const event = new Event('change', {
+                bubbles: true
+            });
+            radioInput.dispatchEvent(event);
         });
     });
 
@@ -448,16 +507,40 @@
         });
 
         paymentRadios.forEach(radio => {
-            radio.addEventListener('change', validateForm);
+            radio.addEventListener('change', function() {
+                validateForm();
+                // If online payment is selected and form is valid, open Razorpay
+                if (this.value === 'online' && document.getElementById('placeOrderBtn').disabled === false) {
+                    setTimeout(() => {
+                        handleOnlinePayment();
+                    }, 100);
+                }
+            });
         });
 
-        // Form submission validation
+        // Form submission validation - CRITICAL SECURITY CHECK
         form.addEventListener('submit', function(e) {
             const paymentMethod = document.querySelector('input[name="payment_method"]:checked');
+
             if (!paymentMethod) {
                 e.preventDefault();
                 alert('Please select a payment method');
+                return false;
             }
+
+            // SECURITY: Block online payment submission through form
+            // Online payments MUST go through Razorpay modal, not form submission
+            if (paymentMethod.value === 'online') {
+                e.preventDefault();
+                alert('Security Policy: Online payments must be processed through Razorpay gateway.\n\nPlease select "Pay Online" to open the payment gateway and complete your payment securely.');
+                // Reset to COD for user clarity
+                document.querySelector('input[value="cod"]').checked = true;
+                validateForm(); // Update button state
+                return false;
+            }
+
+            // Allow only COD to submit through normal form
+            return true;
         });
 
         // Initial validation check
@@ -509,5 +592,141 @@
         nameInput.classList.toggle('is-invalid', !isNameValid && nameInput.value.trim().length > 0);
         addressInput.classList.toggle('is-invalid', !isAddressValid && addressInput.value.trim().length > 0);
     }
+
+    // Handle online payment - called when online payment is selected with valid form
+    function handleOnlinePayment() {
+        const form = document.getElementById('checkoutForm');
+        const paymentMethod = document.querySelector('input[name="payment_method"]:checked');
+        const loader = document.getElementById('paymentLoader');
+
+        if (paymentMethod && paymentMethod.value === 'online') {
+            // Get form data
+            const formData = new FormData(form);
+
+            console.log('Opening Razorpay payment for order: {{ $order->id }}');
+
+            // Show loader
+            loader.classList.add('show');
+
+            // Create order first, then open Razorpay payment
+            fetch("{{ route('payment.create') }}", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                    },
+                    body: JSON.stringify({
+                        name: formData.get('name'),
+                        phone: formData.get('phone'),
+                        email: formData.get('email'),
+                        address: formData.get('address'),
+                        city: formData.get('city'),
+                        state: formData.get('state'),
+                        pincode: formData.get('pincode'),
+                        order_id: "{{ $order->id }}"
+                    })
+                })
+                .then(res => {
+                    console.log('Response status:', res.status);
+                    const contentType = res.headers.get('content-type');
+
+                    if (!contentType || !contentType.includes('application/json')) {
+                        throw new Error('Invalid response from server');
+                    }
+
+                    return res.json().then(data => {
+                        if (!res.ok) {
+                            throw new Error(data.error || 'Failed to create payment order');
+                        }
+                        return data;
+                    });
+                })
+                .then(data => {
+                    console.log('Payment data received:', data);
+
+                    // Hide loader
+                    loader.classList.remove('show');
+
+                    if (!data.order_id || !data.key || !data.amount) {
+                        throw new Error('Invalid payment data received: ' + JSON.stringify(data));
+                    }
+
+                    var options = {
+                        key: data.key,
+                        amount: data.amount * 100,
+                        currency: "INR",
+                        order_id: data.order_id,
+                        prefill: {
+                            name: formData.get('name'),
+                            email: formData.get('email'),
+                            contact: formData.get('phone')
+                        },
+                        handler: function(response) {
+                            console.log('Payment response:', response);
+                            // Payment successful, verify signature
+                            window.location.href =
+                                "/payment-success?razorpay_payment_id=" + response.razorpay_payment_id +
+                                "&razorpay_order_id=" + response.razorpay_order_id +
+                                "&razorpay_signature=" + response.razorpay_signature +
+                                "&order_id={{ $order->id }}";
+                        },
+                        modal: {
+                            ondismiss: function() {
+                                console.log('Payment modal dismissed - switching to COD');
+                                // Hide loader
+                                document.getElementById('paymentLoader').classList.remove('show');
+
+                                // Deselect online payment
+                                const onlineRadio = document.querySelector('input[value="online"][name="payment_method"]');
+                                if (onlineRadio) {
+                                    onlineRadio.checked = false;
+                                    const onlineCard = onlineRadio.closest('.payment-card');
+                                    if (onlineCard) {
+                                        onlineCard.classList.remove('active');
+                                    }
+                                }
+
+                                // Get the COD radio button and select it
+                                const codRadio = document.querySelector('input[value="cod"][name="payment_method"]');
+                                if (codRadio) {
+                                    codRadio.checked = true;
+                                    console.log('COD selected:', codRadio.checked);
+
+                                    // Trigger change event to update UI
+                                    const changeEvent = new Event('change', {
+                                        bubbles: true
+                                    });
+                                    codRadio.dispatchEvent(changeEvent);
+
+                                    // Also trigger click on the payment card to update styles
+                                    const paymentCard = codRadio.closest('.payment-card');
+                                    if (paymentCard) {
+                                        paymentCard.classList.add('active');
+                                        console.log('Payment card updated');
+                                    }
+                                }
+                            }
+                        }
+                    };
+
+                    console.log('Opening Razorpay with options:', options);
+                    new Razorpay(options).open();
+                })
+                .catch(error => {
+                    console.error('Payment Error:', error);
+                    // Hide loader
+                    document.getElementById('paymentLoader').classList.remove('show');
+                    alert('Error: ' + error.message);
+                    // Uncheck online payment on error
+                    document.querySelector('input[value="cod"]').checked = true;
+                    document.querySelector('input[value="cod"]').dispatchEvent(new Event('change', {
+                        bubbles: true
+                    }));
+                });
+        }
+    }
 </script>
+
+
+
 @endsection

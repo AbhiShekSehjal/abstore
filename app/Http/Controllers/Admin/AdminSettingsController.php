@@ -15,7 +15,7 @@ class AdminSettingsController extends Controller
     {
         if (Auth::check()) {
             $settings = Setting::first();
-            
+
             return view('admin.settings', compact('settings'));
         } else {
             return redirect()->route('AdminLoginPage');
@@ -32,6 +32,7 @@ class AdminSettingsController extends Controller
             'slider_image_3' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
             'Section_3_Image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'ORcode' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
             'main_heading' => 'nullable|string',
             'main_pera' => 'nullable|string',
             'Section_3_Text' => 'nullable|string',
@@ -39,11 +40,16 @@ class AdminSettingsController extends Controller
         ]);
 
         // Get first setting or create if not exists
-        $setting = Setting::firstOrCreate([]);
+        $setting = Setting::first();
+
+        if (!$setting) {
+            $setting = Setting::create([]);
+        }
 
         $updateData = [];
 
-        foreach (['slider_image_1', 'slider_image_2', 'slider_image_3', 'logo', 'Section_3_Image'] as $field) {
+        // Handle image uploads
+        foreach (['slider_image_1', 'slider_image_2', 'slider_image_3', 'logo', 'Section_3_Image', 'ORcode'] as $field) {
             if ($request->hasFile($field)) {
                 // Delete old image if exists
                 if ($setting->$field && Storage::disk('public')->exists($setting->$field)) {
@@ -55,15 +61,14 @@ class AdminSettingsController extends Controller
             }
         }
 
-        $updateData['main_heading'] = $request->main_heading;
-        $updateData['main_pera'] = $request->main_pera;
-        $updateData['Section_3_Text'] = $request->Section_3_Text;
-        $updateData['Section_3_Text2'] = $request->Section_3_Text2;
+        // Handle text fields - always update them (even if empty)
+        $updateData['main_heading'] = $request->input('main_heading');
+        $updateData['main_pera'] = $request->input('main_pera');
+        $updateData['Section_3_Text'] = $request->input('Section_3_Text');
+        $updateData['Section_3_Text2'] = $request->input('Section_3_Text2');
 
-        // Update setting if any new images uploaded
-        if (!empty($updateData)) {
-            $setting->update($updateData);
-        }
+        // Update setting with all data
+        $setting->update($updateData);
 
         return back()->with('success', 'Settings updated successfully!');
     }

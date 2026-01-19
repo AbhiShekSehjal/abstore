@@ -15,6 +15,7 @@ class Setting extends Model
         "logo",
         "Section_3_Image",
         "Section_3_Text",
-        "Section_3_Text2"
+        "Section_3_Text2",
+        "ORcode",
     ];
 }

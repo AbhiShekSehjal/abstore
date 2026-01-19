@@ -146,6 +146,22 @@
             <small class="text-danger d-block mt-2">{{ $errors->first('Section_3_Text2') }}</small>
             @endif
         </div>
+
+        <br>
+
+        <h3><b>Payment Settings</b></h3>
+        <div class="mb-3">
+            <label for="ORcode" class="form-label">OR Code</label>
+            <div class="d-flex align-items-center justify-content-center gap-3">
+                <img src="{{ asset('storage/' . $settings->ORcode) }}" alt="ORcode" class="sliderImage"
+                    data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage(this.src)">
+                <input type="file" class="form-control" id="ORcode" name="ORcode" accept="image/*">
+                @if($errors->has('ORcode'))
+                <small class="text-danger d-block mt-2">{{ $errors->first('ORcode') }}</small>
+                @endif
+            </div>
+        </div>
+
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

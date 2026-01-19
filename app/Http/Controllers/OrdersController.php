@@ -70,4 +70,33 @@ class OrdersController extends Controller
         return redirect()->route('orders.track')
             ->with('success', 'Thank you for your feedback! We appreciate your review.');
     }
+
+    public function cancel(Request $request, $orderId)
+    {
+        if (!Auth::check()) {
+            return redirect()->route('LoginPage');
+        }
+
+        // Find the order and verify it belongs to the authenticated user
+        $order = Order::find($orderId);
+
+        if (!$order || $order->user_id !== Auth::id()) {
+            return redirect()->route('orders.track')
+                ->with('error', 'Unauthorized access');
+        }
+
+        // Only allow cancellation for pending or confirmed orders
+        if (!in_array($order->order_status, ['pending', 'confirmed'])) {
+            return redirect()->route('orders.track')
+                ->with('error', 'Cannot cancel orders that are already shipped or delivered');
+        }
+
+        // Update order status to cancelled
+        $order->update([
+            'order_status' => 'cancelled'
+        ]);
+
+        return redirect()->route('orders.track')
+            ->with('success', 'Order has been cancelled successfully');
+    }
 }

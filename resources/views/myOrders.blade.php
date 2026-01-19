@@ -458,9 +458,19 @@
                     </div>
                 </div>
             </div>
-            <span class="order-status status-{{ $order->order_status }}">
-                {{ ucfirst($order->order_status) }}
-            </span>
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <span class="order-status status-{{ $order->order_status }}">
+                    {{ ucfirst($order->order_status) }}
+                </span>
+                @if(in_array($order->order_status, ['pending', 'confirmed']))
+                <form method="POST" action="{{ route('orders.cancel', $order->id) }}" style="display: inline;">
+                    @csrf
+                    <button type="submit" class="btn btn-outline-danger btn-sm" style="padding: 8px 16px; font-size: 0.9rem; font-weight: 600; border-radius: 4px;" onclick="return confirm('Are you sure you want to cancel this order? This action cannot be undone.')">
+                        ✕ Cancel Order
+                    </button>
+                </form>
+                @endif
+            </div>
         </div>
 
         <!-- Order Timeline -->

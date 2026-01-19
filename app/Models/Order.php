@@ -31,4 +31,27 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Calculate and get the total amount from items
+     */
+    public function calculateTotal()
+    {
+        $total = 0;
+        foreach ($this->items as $item) {
+            $total += $item->price * $item->quantity;
+        }
+        return $total;
+    }
+
+    /**
+     * Get order total, calculate if not set
+     */
+    public function getTotalAmount()
+    {
+        if ($this->total > 0) {
+            return $this->total;
+        }
+        return $this->calculateTotal();
+    }
 }

@@ -31,7 +31,7 @@
         <div class="col-lg-4 col-md-8 col-sm-12 shadow p-5 rounded-0 bg-white">
             <div class="d-flex align-items-center justify-content-center mb-4">
 
-                @if($settings->logo)
+                @if($settings && $settings->logo)
                 <img
                     src="{{ asset('storage/' . $settings->logo) }}"
                     alt="abstore-logo" width='100'>

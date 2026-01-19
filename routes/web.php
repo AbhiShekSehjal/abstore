@@ -47,6 +47,8 @@ Route::get('/orders', [OrdersController::class, 'index'])->name('orders.track');
 
 Route::post('/orders/{order}/feedback', [OrdersController::class, 'submitFeedback'])->name('orders.submitFeedback');
 
+Route::post('/orders/{order}/cancel', [OrdersController::class, 'cancel'])->name('orders.cancel');
+
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
 
 Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
@@ -55,6 +57,13 @@ Route::get('/buy-now/{product}', [CheckoutController::class, 'buyNow'])->name('b
 
 Route::put('/orders/{order}/address', [CheckoutController::class, 'updateAddress'])
     ->name('orders.updateAddress');
+
+    // Razorpay Payment Routes
+Route::post('/create-payment', [CheckoutController::class, 'createPayment'])
+    ->name('payment.create');
+
+Route::get('/payment-success', [CheckoutController::class, 'paymentSuccess'])
+    ->name('payment.success');
 
 Route::get('/category/{id}', [CategoryController::class, 'show']);
 
