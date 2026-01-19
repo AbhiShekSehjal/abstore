@@ -473,7 +473,6 @@
             </div>
         </div>
 
-        <!-- Order Timeline -->
         <div class="order-timeline">
             <div class="timeline-steps">
                 @php
