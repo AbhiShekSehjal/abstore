@@ -537,7 +537,6 @@
         document.getElementById('sale_price').value = salePrice.toFixed(2);
     }
 
-    // Calculate sale price for Edit Product Modal
     document.getElementById('editPrice')?.addEventListener('input', calculateEditSalePrice);
     document.getElementById('editDiscount')?.addEventListener('input', calculateEditSalePrice);
 
