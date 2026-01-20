@@ -59,7 +59,7 @@
         <!-- LEFT SIDE : CART ITEMS -->
         <div class="col-lg-8">
             <h1 class="mb-2 mt-2">Cart</h1>
-            <p class="text-muted">
+            <p class="opacity-75">
                 {{ $order?->items->count() ?? 0 }} items
             </p>
 
@@ -237,7 +237,7 @@
 
                 <div class="d-flex justify-content-between">
                     <span>Taxes</span>
-                    <span class="text-muted">* Taxes may apply</span>
+                    <span class="opacity-75">* Taxes may apply</span>
                 </div>
 
                 <hr>

@@ -199,7 +199,6 @@
 
     .payment-method {
         font-weight: 600;
-        color: #1a1a1a;
     }
 
     .payment-badge {
@@ -465,8 +464,8 @@
                 @if(in_array($order->order_status, ['pending', 'confirmed']))
                 <form method="POST" action="{{ route('orders.cancel', $order->id) }}" style="display: inline;">
                     @csrf
-                    <button type="submit" class="btn btn-outline-danger btn-sm" style="padding: 8px 16px; font-size: 0.9rem; font-weight: 600; border-radius: 4px;" onclick="return confirm('Are you sure you want to cancel this order? This action cannot be undone.')">
-                        ✕ Cancel Order
+                    <button type="submit" class="btn-back btn btn-sm btn-outline-dark rounded-0" onclick="return confirm('Are you sure you want to cancel this order? This action cannot be undone.')">
+                        Cancel Order
                     </button>
                 </form>
                 @endif
@@ -885,7 +884,7 @@
                             </td>
                             <td style="text-align: center; font-weight: 600;">{{ $item->quantity }}</td>
                             <td style="text-align: right;">₹{{ number_format($item->price, 2) }}</td>
-                            <td style="text-align: right; font-weight: 700; color: #1a1a1a;">₹{{ number_format($itemTotal, 2) }}</td>
+                            <td style="text-align: right; font-weight: 700;">₹{{ number_format($itemTotal, 2) }}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -905,7 +904,7 @@
                                     {{ $order->payment_method === 'cod' ? 'Cash on Delivery' : 'Online Payment' }}
                                 </div>
                             </div>
-                            <span class="payment-badge payment-{{ $order->payment_status }}">
+                            <span class="payment-badge payment-{{ $order->payment_status }} mt-3">
                                 {{ ucfirst($order->payment_status) }}
                             </span>
                         </div>

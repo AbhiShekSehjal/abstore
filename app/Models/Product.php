@@ -15,6 +15,7 @@ class Product extends Model
         'stock',
         'image',
         'discount',
+        'hoverProductImage',
     ];
 
     public function category()

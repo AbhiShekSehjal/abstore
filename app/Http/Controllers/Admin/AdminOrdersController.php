@@ -10,14 +10,55 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminOrdersController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         if (Auth::check()) {
+            $search = $request->input('search', '');
+            $sort = $request->input('sort', 'newest');
+            
+            $query = Order::query();
 
-            $orders = Order::all();
+            // Apply search filter
+            if ($search) {
+                $query->where('name', 'like', '%' . $search . '%')
+                      ->orWhere('email', 'like', '%' . $search . '%')
+                      ->orWhere('id', 'like', '%' . $search . '%');
+            }
+
+            // Apply sorting
+            switch ($sort) {
+                case 'name_asc':
+                    $query->orderBy('name', 'asc');
+                    break;
+                case 'name_desc':
+                    $query->orderBy('name', 'desc');
+                    break;
+                case 'email_asc':
+                    $query->orderBy('email', 'asc');
+                    break;
+                case 'email_desc':
+                    $query->orderBy('email', 'desc');
+                    break;
+                case 'total_asc':
+                    $query->orderByRaw('(SELECT SUM(price * quantity) FROM order_items WHERE order_items.order_id = orders.id) ASC');
+                    break;
+                case 'total_desc':
+                    $query->orderByRaw('(SELECT SUM(price * quantity) FROM order_items WHERE order_items.order_id = orders.id) DESC');
+                    break;
+                case 'newest':
+                    $query->orderBy('created_at', 'desc');
+                    break;
+                case 'oldest':
+                    $query->orderBy('created_at', 'asc');
+                    break;
+                default:
+                    $query->orderBy('created_at', 'desc');
+            }
+
+            $orders = $query->paginate(10);
             $orderItems = OrderItem::all();
 
-            return view('admin.orders', compact('orders', 'orderItems'));
+            return view('admin.orders', compact('orders', 'orderItems', 'search', 'sort'));
         } else {
             return redirect()->route('AdminLoginPage');
         }

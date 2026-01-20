@@ -102,6 +102,14 @@ class CheckoutController extends Controller
             'payment_status' => 'pending',
         ]);
 
+        // Decrease product stock for each item in the order
+        foreach ($order->items as $item) {
+            $product = Product::find($item->product_id);
+            if ($product) {
+                $product->decrement('stock', $item->quantity);
+            }
+        }
+
         // Redirect to orders page with success message
         return redirect()->route('orders.track')
             ->with('success', 'Order placed successfully! You can now track your order.');
@@ -318,6 +326,14 @@ class CheckoutController extends Controller
                 'payment_status' => 'paid',
                 'order_status'   => 'confirmed',
             ]);
+
+            // Decrease product stock for each item in the order
+            foreach ($order->items as $item) {
+                $product = Product::find($item->product_id);
+                if ($product) {
+                    $product->decrement('stock', $item->quantity);
+                }
+            }
 
             return redirect()->route('orders.track')
                 ->with('success', 'Payment successful! Your order has been confirmed.');

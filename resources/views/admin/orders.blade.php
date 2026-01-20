@@ -13,8 +13,40 @@
 <div class="container py-4">
 
     <div class="d-flex align-items-center justify-content-between mb-1">
-        <h3><b>Orders</b></h3>
-        <span class="badge rounded-0 text-bg-secondary py-2 px-3">Total: {{ $orders->count() }}</span>
+        <div class="d-flex align-items-start">
+            <h1>Orders</h1>
+            <span class="badge text-success">{{ $orders->total() }}</span>
+        </div>
+
+        <!-- Search and Sort Section -->
+        <div class="row g-3">
+            <div class="col-md-6">
+                <form method="GET" action="{{ route('admin.orders') }}" class="d-flex gap-2">
+                    <input type="text" name="search" class="form-control rounded-0" placeholder="Search orders by customer name, email, or order ID..." value="{{ $search ?? '' }}">
+                    <input type="hidden" name="sort" value="{{ $sort ?? 'newest' }}">
+                    <button type="submit" class="btn btn-dark rounded-0">Search</button>
+                    @if($search)
+                    <a href="{{ route('admin.orders') }}" class="btn btn-secondary rounded-0">Clear</a>
+                    @endif
+                </form>
+            </div>
+
+            <div class="col-md-6">
+                <form method="GET" action="{{ route('admin.orders') }}" class="d-flex gap-2">
+                    <select name="sort" class="form-select rounded-0" onchange="this.form.submit()">
+                        <option value="newest" {{ ($sort ?? 'newest') === 'newest' ? 'selected' : '' }}>Sort: Newest First</option>
+                        <option value="oldest" {{ ($sort ?? '') === 'oldest' ? 'selected' : '' }}>Sort: Oldest First</option>
+                        <option value="name_asc" {{ ($sort ?? '') === 'name_asc' ? 'selected' : '' }}>Sort: Customer Name (A-Z)</option>
+                        <option value="name_desc" {{ ($sort ?? '') === 'name_desc' ? 'selected' : '' }}>Sort: Customer Name (Z-A)</option>
+                        <option value="email_asc" {{ ($sort ?? '') === 'email_asc' ? 'selected' : '' }}>Sort: Email (A-Z)</option>
+                        <option value="email_desc" {{ ($sort ?? '') === 'email_desc' ? 'selected' : '' }}>Sort: Email (Z-A)</option>
+                        <option value="total_asc" {{ ($sort ?? '') === 'total_asc' ? 'selected' : '' }}>Sort: Total (Low to High)</option>
+                        <option value="total_desc" {{ ($sort ?? '') === 'total_desc' ? 'selected' : '' }}>Sort: Total (High to Low)</option>
+                    </select>
+                    <input type="hidden" name="search" value="{{ $search ?? '' }}">
+                </form>
+            </div>
+        </div>
     </div>
 
     <table class="table table-hover table-striped table-bordered">
@@ -147,6 +179,13 @@
             @endforelse
         </tbody>
     </table>
+
+    <!-- Pagination -->
+    <div class="mt-4 ms-auto">
+        <nav>
+            {{ $orders->appends(request()->query())->links('pagination::bootstrap-5') }}
+        </nav>
+    </div>
 
 </div>
 

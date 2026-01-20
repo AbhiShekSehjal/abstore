@@ -10,6 +10,7 @@
 
     .heroContainer {
         background: #000;
+        padding: 0 62px;
     }
 
     .aboutUsHeading {

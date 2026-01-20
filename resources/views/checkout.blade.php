@@ -651,6 +651,10 @@
                         throw new Error('Invalid payment data received: ' + JSON.stringify(data));
                     }
 
+                    // Format phone number with country code for Razorpay
+                    const phoneNumber = formData.get('phone');
+                    const formattedPhone = phoneNumber ? '91' + phoneNumber : '';
+
                     var options = {
                         key: data.key,
                         amount: data.amount * 100,
@@ -659,16 +663,23 @@
                         prefill: {
                             name: formData.get('name'),
                             email: formData.get('email'),
-                            contact: formData.get('phone')
+                            contact: formattedPhone
                         },
                         handler: function(response) {
                             console.log('Payment response:', response);
-                            // Payment successful, verify signature
-                            window.location.href =
-                                "/payment-success?razorpay_payment_id=" + response.razorpay_payment_id +
-                                "&razorpay_order_id=" + response.razorpay_order_id +
-                                "&razorpay_signature=" + response.razorpay_signature +
-                                "&order_id={{ $order->id }}";
+                            // Show success loader
+                            const loader = document.getElementById('paymentLoader');
+                            loader.innerHTML = '<div class="spinner"></div><div class="loader-text">✓ Payment Successful!<br>Redirecting to your orders...</div>';
+                            loader.classList.add('show');
+                            
+                            // Payment successful, verify signature after small delay
+                            setTimeout(() => {
+                                window.location.href =
+                                    "/payment-success?razorpay_payment_id=" + response.razorpay_payment_id +
+                                    "&razorpay_order_id=" + response.razorpay_order_id +
+                                    "&razorpay_signature=" + response.razorpay_signature +
+                                    "&order_id={{ $order->id }}";
+                            }, 1000);
                         },
                         modal: {
                             ondismiss: function() {

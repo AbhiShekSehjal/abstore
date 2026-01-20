@@ -89,11 +89,19 @@ Route::get('/admin/categories', [AdminCategoriesController::class, 'index'])->na
 
 Route::post('/admin/categories/add', [AdminCategoriesController::class, 'add'])->name('categories.add');
 
+Route::post('/admin/categories/update', [AdminCategoriesController::class, 'update'])->name('categories.update');
+
+Route::post('/admin/categories/delete', [AdminCategoriesController::class, 'delete'])->name('categories.delete');
+
 Route::get('/admin/products', [AdminProductsController::class, 'index'])->name('admin.products');
 
 Route::post('/admin/products/add', [AdminProductsController::class, 'add'])->name('products.add');
 
-Route::get('/admin/orders', [AdminOrdersController::class, 'index']);
+Route::post('/admin/products/update', [AdminProductsController::class, 'update'])->name('products.update');
+
+Route::post('/admin/products/delete', [AdminProductsController::class, 'delete'])->name('products.delete');
+
+Route::get('/admin/orders', [AdminOrdersController::class, 'index'])->name('admin.orders');
 
 Route::put('/orders/{order}/payment-status', [AdminOrdersController::class, 'updatePaymentStatus'])
     ->name('orders.updatePaymentStatus');
@@ -105,7 +113,11 @@ Route::get('/admin/settings', [AdminSettingsController::class, 'index']);
 
 Route::post('/admin/settings/update', [AdminSettingsController::class, 'update'])->name('settings.update');
 
-Route::get('/admin/users', [AdminUsersController::class, 'index']);
+Route::get('/admin/users', [AdminUsersController::class, 'index'])->name('admin.users');
+
+Route::post('/admin/users/update', [AdminUsersController::class, 'update'])->name('users.update');
+
+Route::post('/admin/users/delete', [AdminUsersController::class, 'delete'])->name('users.delete');
 
 Route::get('/admin/auth/login', [AdminAuthController::class, 'loginPage'])->name('AdminLoginPage');
 

@@ -65,6 +65,7 @@
 
     .splide__slide {
         position: relative;
+        height: 500px;
     }
 
     .showMoreBtn:hover {
@@ -92,10 +93,49 @@
         border-radius: 0px;
     }
 
-    .productcard:hover .card-img-top {
+    .productImage {
+        position: relative;
+    }
+
+    .productImage img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .productImage .main-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 1;
+    }
+
+    .productImage .hover-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+    }
+
+    .productcard:hover .main-image {
+        opacity: 0;
+    }
+
+    .productcard:hover .hover-image {
+        opacity: 1;
+    }
+
+    /* .productcard:hover .card-img-top {
         transform: scale(1.06);
         transition: all 0.5s ease;
-    }
+    } */
 
     .productHeading {
         font-size: 60px;
@@ -110,7 +150,8 @@
     }
 
     .thirdSection {
-        background-color: #f8f9fa;
+       background-blend-mode: difference;
+       background-color: white;
     }
 
     .thirdSectionContent h2 {
@@ -160,15 +201,15 @@
     <div class="splide splideMain">
         <div class="splide__track">
             <ul class="splide__list">
-                <li class="splide__slide">@if($settings->slider_image_1)
+                <li class="splide__slide w-100 h-100">@if($settings->slider_image_1)
                     <img src="{{ asset('storage/' . $settings->slider_image_1) }}" alt="Slider 1" class='heroImage'>
                     @endif
                 </li>
-                <li class="splide__slide">@if($settings->slider_image_2)
+                <li class="splide__slide w-100">@if($settings->slider_image_2)
                     <img src="{{ asset('storage/' . $settings->slider_image_2) }}" alt="Slider 2" class='heroImage'>
                     @endif
                 </li>
-                <li class="splide__slide"> @if($settings->slider_image_3)
+                <li class="splide__slide w-100"> @if($settings->slider_image_3)
                     <img src="{{ asset('storage/' . $settings->slider_image_3) }}" alt="Slider 3" class='heroImage'>
                     @endif
                 </li>
@@ -193,130 +234,142 @@
 
 </div>
 
-<div id="main-slider" class="splide mt-5 mb-5" aria-label="Main Slider">
-    <div class="splide__track">
-        <ul class="splide__list">
+<div class="container">
 
-            @forelse($categories as $category)
-            <li class="splide__slide">
-                <a href="{{ url('category/' . $category->id) }}">
 
-                    @if($category->category_image)
-                    <img
-                        class="sliderImg"
-                        src="{{ asset('storage/' . $category->category_image) }}"
-                        alt="{{ $category->name }}">
-                    @else
-                    <img
-                        class="sliderImg"
-                        src="{{ asset('images/no-image.png') }}"
-                        alt="No image">
-                    @endif
+    <div id="main-slider" class="splide mt-5 mb-5" aria-label="Main Slider">
+        <div class="splide__track">
+            <ul class="splide__list">
 
-                    <p class="categoryName">{{ $category->name }}</p>
-                </a>
-            </li>
-            @empty
-            <li class="text-center">
-                <h3>No category found.</h3>
-            </li>
-            @endforelse
+                @forelse($categories as $category)
+                <li class="splide__slide">
+                    <a href="{{ url('category/' . $category->id) }}">
 
-        </ul>
-    </div>
-</div>
+                        @if($category->category_image)
+                        <img
+                            class="sliderImg"
+                            src="{{ asset('storage/' . $category->category_image) }}"
+                            alt="{{ $category->name }}">
+                        @else
+                        <img
+                            class="sliderImg"
+                            src="{{ asset('images/no-image.png') }}"
+                            alt="No image">
+                        @endif
 
-@if($settings->Section_3_Image)
-<section class="thirdSection p-5 mb-5">
-    <div class="container">
-        <div class="row align-items-center g-4">
-
-            <!-- LEFT : IMAGE -->
-            <div class="col-lg-6 text-center">
-                <div class="imageWrapper">
-                    <img
-                        src="{{ asset('storage/' . $settings->Section_3_Image) }}"
-                        alt="Offer Image"
-                        class="offerImg">
-                </div>
-            </div>
-
-            <!-- RIGHT : TEXT -->
-            <div class="col-lg-6">
-                <div class="thirdSectionContent">
-                    @if($settings->Section_3_Text)
-                    <h2 class="mb-3">
-                        {{ $settings->Section_3_Text }}
-                    </h2>
-                    @endif
-
-                    <p class="text-muted mb-4">
-                        {{ $settings->Section_3_Text2 }}
-                    </p>
-
-                    <a href="/products" class="btn btn-dark btn-lg rounded-0 px-5">
-                        Shop Now
+                        <p class="categoryName">{{ $category->name }}</p>
                     </a>
-                </div>
-            </div>
+                </li>
+                @empty
+                <li class="text-center">
+                    <h3>No category found.</h3>
+                </li>
+                @endforelse
 
+            </ul>
         </div>
     </div>
-</section>
-@endif
 
+    @if($settings->Section_3_Image)
+    <section class="thirdSection p-5 mb-5">
+        <div class="container">
+            <div class="row align-items-center g-4">
 
-<div class="forthSection overflow-hidden">
-    <h1 class='productHeading mb-5'>Our Products</h1>
-
-    <div class="row g-1">
-        @forelse($products as $product)
-        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-            <div class="card rounded-0 productcard h-100">
-                <div class="productImage overflow-hidden">
-                    <a href="product/{{ $product->id }}">
-                        @if($product->image)
-                        <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top">
-                        @else
-                        <img src="{{ asset('images/no-image.png') }}" class="card-img-top">
-                        @endif
-                    </a>
+                <!-- LEFT : IMAGE -->
+                <div class="col-lg-6 text-center">
+                    <div class="imageWrapper">
+                        <img
+                            src="{{ asset('storage/' . $settings->Section_3_Image) }}"
+                            alt="Offer Image"
+                            class="offerImg">
+                    </div>
                 </div>
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">{{ $product->name }}</h5>
-                    <p class="card-text">{{ $product->description }}</p>
 
-                    <p class="card-price mt-auto">
-                        <span class="fw-bold fs-5">{{ $product->price }} &#8377;</span>
-                        &nbsp;&nbsp;<del>{{ $product->sale_price }} &#8377;</del>
-                    </p>
-                    <p class="card-discount">{{ $product->discount }} % off</p>
+                <!-- RIGHT : TEXT -->
+                <div class="col-lg-6">
+                    <div class="thirdSectionContent">
+                        @if($settings->Section_3_Text)
+                        <h2 class="mb-3">
+                            {{ $settings->Section_3_Text }}
+                        </h2>
+                        @endif
+
+                        <p class="text-muted mb-4">
+                            {{ $settings->Section_3_Text2 }}
+                        </p>
+
+                        <a href="/products" class="btn btn-dark btn-lg rounded-0 px-5">
+                            Shop Now
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    @endif
 
 
-                    <div class="d-flex gap-2">
-                        <form action="{{ route('cart.add', $product->id) }}" method="POST" class="w-100">
-                            @csrf
-                            <button type="submit" class="btn btn-outline-dark rounded-0 w-100">
-                                Add to cart
-                            </button>
-                        </form>
-                        <a href="{{ route('buy.now', $product->id) }}" class="btn btn-success rounded-0 w-100">Buy Now</a>
+    <div class="forthSection overflow-hidden">
+        <h1 class='productHeading mb-5'>Our Products</h1>
+
+        <div class="row g-1">
+            @forelse($products as $product)
+            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                <div class="card rounded-0 productcard h-100">
+                    <div class="productImage overflow-hidden" style="position: relative; height: 400px;">
+                        <a href="product/{{ $product->id }}" style="display: block; width: 100%; height: 100%;">
+                            @if($product->image)
+                            <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top main-image">
+                            @else
+                            <img src="{{ asset('images/no-image.png') }}" class="card-img-top main-image">
+                            @endif
+                            
+                            @if($product->hoverProductImage)
+                            <img src="{{ asset('storage/' . $product->hoverProductImage) }}" class="card-img-top hover-image">
+                            @else
+                            <img src="{{ asset('images/no-image.png') }}" class="card-img-top hover-image">
+                            @endif
+                        </a>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ $product->name }}</h5>
+                        <p class="card-text">{{ $product->description }}</p>
+
+                        <p class="card-price mt-auto">
+                            <span class="fw-bold fs-5">{{ $product->price }} &#8377;</span>
+                            &nbsp;&nbsp;<del>{{ $product->sale_price }} &#8377;</del>
+                        </p>
+                        <p class="card-discount">{{ $product->discount }} % off</p>
+
+
+                        <div class="d-flex gap-2">
+                            <form action="{{ route('cart.add', $product->id) }}" method="POST" class="w-100">
+                                @csrf
+                                <button type="submit" class="btn btn-outline-dark rounded-0 w-100">
+                                    Add to cart
+                                </button>
+                            </form>
+                            <a href="{{ route('buy.now', $product->id) }}" class="btn btn-success rounded-0 w-100">Buy Now</a>
+                        </div>
                     </div>
                 </div>
             </div>
+            @empty
+            <div class="col-12 text-center py-5">
+                <h3>No products found</h3>
+            </div>
+            @endforelse
         </div>
-        @empty
-        <div class="col-12 text-center py-5">
-            <h3>No products found</h3>
-        </div>
-        @endforelse
-    </div>
 
-    <div class="d-flex justify-content-center my-5">
-        <a href='/products' class='btn btn-lg btn-outline-success rounded-0'>More</a>
+        <div class="d-flex justify-content-center my-5">
+            <a href='/products' class='btn btn-lg btn-outline-success rounded-0'>More</a>
+        </div>
+
     </div>
 
 </div>
+
 
 @endsection
 

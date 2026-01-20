@@ -23,17 +23,59 @@
         padding-bottom: 30px;
     }
 
+    .productImage {
+        position: relative;
+        height: 400px;
+    }
+
+    .productImage img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        /* transition: all 0.5s ease; */
+    }
+
+    .productImage .main-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 1;
+        /* transition: opacity 0.5s ease; */
+    }
+
+    .productImage .hover-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        /* transition: opacity 0.5s ease; */
+    }
+
+    .productcard:hover .main-image {
+        opacity: 0;
+    }
+
+    .productcard:hover .hover-image {
+        opacity: 1;
+    }
+
     .card-img-top {
         height: 400px;
         object-fit: cover;
         border-radius: 0 !important;
-
     }
 
-    .productcard:hover .card-img-top {
+    /* .productcard:hover .card-img-top {
         transform: scale(1.06);
         transition: all 0.5s ease;
-    }
+    } */
 
     .card-text {
         display: -webkit-box;
@@ -70,10 +112,10 @@
         </div>
 
 
-        <div class="col-lg-3 col-md-12 mb-4 border-end pt-3 pe-3 ps-3
+        <div class="col-lg-2 col-md-12 mb-4 border-end pt-3 pe-3 ps-3
             collapse d-lg-block filterSection" id="filterCollapse">
             <form method="GET" action="{{ route('products') }}">
-                <b class='fs-4'>Filter</b>
+                <p class='fs-4'>Filter</p>
                 <hr>
 
                 <p class='fs-4'>Categories</p>
@@ -137,7 +179,7 @@
             </form>
         </div>
 
-        <div class="col-lg-9 col-md-12">
+        <div class="col-lg-10 col-md-12 py-4">
             <div class="products">
                 @if ($products->count() > 0)
                 <h1 class="mt-2 text-center">Products</h1>
@@ -146,14 +188,20 @@
 
                 <div class="row g-1">
                     @forelse($products as $product)
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
                         <div class="card rounded-0 productcard h-100">
                             <div class="productImage overflow-hidden">
-                                <a href="product/{{ $product->id }}">
+                                <a href="product/{{ $product->id }}" style="display: block; width: 100%; height: 100%;">
                                     @if($product->image)
-                                    <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top">
+                                    <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top main-image">
                                     @else
-                                    <img src="{{ asset('images/no-image.png') }}" class="card-img-top">
+                                    <img src="{{ asset('images/no-image.png') }}" class="card-img-top main-image">
+                                    @endif
+                                    
+                                    @if($product->hoverProductImage)
+                                    <img src="{{ asset('storage/' . $product->hoverProductImage) }}" class="card-img-top hover-image">
+                                    @else
+                                    <img src="{{ asset('images/no-image.png') }}" class="card-img-top hover-image">
                                     @endif
                                 </a>
                             </div>

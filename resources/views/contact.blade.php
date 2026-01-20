@@ -4,6 +4,6 @@
 
 @section('content')
 
-<h1>Contact Page</h1>
+<div class="container py-4">Contact Page</div>
 
 @endsection

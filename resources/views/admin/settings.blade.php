@@ -52,7 +52,7 @@
     <form action="{{route('settings.update')}}" method="POST" enctype="multipart/form-data">
         @csrf
 
-        <h3><b>Slider Settings</b></h3>
+        <h1 class="mb-4">Slider Settings</h1>
 
         <div class="mb-3">
             <label for="sliderImage1" class="form-label">Slider Image 1</label>
@@ -90,7 +90,7 @@
 
         <br>
 
-        <h3><b>General Settings</b></h3>
+        <h3 class="mb-4">General Settings</h3>
 
         <div class="mb-3">
             <label for="mainHeading" class="form-label">Main Heading</label>
@@ -117,10 +117,33 @@
                 @endif
             </div>
         </div>
+        <div class="row">
+            <div class="mb-3 col-lg-4 col-md-4 col-sm-12">
+                <label for="intsaLink" class="form-label">Instagram Link</label>
+                <input type="text" class="form-control" id="intsaLink" name="intsaLink" value="@if($settings->intsaLink){{$settings->intsaLink}}@endif">
+                @if($errors->has('intsaLink'))
+                <small class="text-danger d-block mt-2">{{ $errors->first('intsaLink') }}</small>
+                @endif
+            </div>
+            <div class="mb-3 col-lg-4 col-md-4 col-sm-12">
+                <label for="fbLink" class="form-label">Facebook Link</label>
+                <input type="text" class="form-control" id="fbLink" name="fbLink" value="@if($settings->fbLink){{$settings->fbLink}}@endif">
+                @if($errors->has('fbLink'))
+                <small class="text-danger d-block mt-2">{{ $errors->first('fbLink') }}</small>
+                @endif
+            </div>
+            <div class="mb-3 col-lg-4 col-md-4 col-sm-12">
+                <label for="twitterLink" class="form-label">Twitter Link</label>
+                <input type="text" class="form-control" id="twitterLink" name="twitterLink" value="@if($settings->twitterLink){{$settings->twitterLink}}@endif">
+                @if($errors->has('twitterLink'))
+                <small class="text-danger d-block mt-2">{{ $errors->first('twitterLink') }}</small>
+                @endif
+            </div>
+        </div>
 
         <br>
 
-        <h3><b>Section 3 Settings</b></h3>
+        <h3 class="mb-4">Section 3 Settings</h3>
         <div class="mb-3">
             <label for="Section3Image" class="form-label">Section 3 Image</label>
             <div class="d-flex align-items-center justify-content-center gap-3">
@@ -149,7 +172,7 @@
 
         <br>
 
-        <h3><b>Payment Settings</b></h3>
+        <!-- <h3 class="mb-4">Payment Settings</h3>
         <div class="mb-3">
             <label for="ORcode" class="form-label">OR Code</label>
             <div class="d-flex align-items-center justify-content-center gap-3">
@@ -160,7 +183,7 @@
                 <small class="text-danger d-block mt-2">{{ $errors->first('ORcode') }}</small>
                 @endif
             </div>
-        </div>
+        </div> -->
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

@@ -36,7 +36,10 @@ class AdminSettingsController extends Controller
             'main_heading' => 'nullable|string',
             'main_pera' => 'nullable|string',
             'Section_3_Text' => 'nullable|string',
-            'Section_3_Text2' => 'nullable|string'
+            'Section_3_Text2' => 'nullable|string',
+            'intsaLink' => 'nullable|string',
+            'fbLink' => 'nullable|string',
+            'twitterLink' => 'nullable|string'
         ]);
 
         // Get first setting or create if not exists
@@ -66,6 +69,9 @@ class AdminSettingsController extends Controller
         $updateData['main_pera'] = $request->input('main_pera');
         $updateData['Section_3_Text'] = $request->input('Section_3_Text');
         $updateData['Section_3_Text2'] = $request->input('Section_3_Text2');
+        $updateData['intsaLink'] = $request->input('intsaLink');
+        $updateData['fbLink'] = $request->input('fbLink');
+        $updateData['twitterLink'] = $request->input('twitterLink');
 
         // Update setting with all data
         $setting->update($updateData);

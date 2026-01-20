@@ -17,5 +17,8 @@ class Setting extends Model
         "Section_3_Text",
         "Section_3_Text2",
         "ORcode",
+        "intsaLink",
+        "fbLink",
+        "twitterLink"
     ];
 }

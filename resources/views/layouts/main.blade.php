@@ -93,6 +93,12 @@
         .card {
             background-color: var(--card-bg);
         }
+
+        .socialMediaLink {
+            mix-blend-mode: difference;
+            color: white;
+            opacity: 0.7;
+        }
     </style>
 
     @stack('styles')
@@ -103,7 +109,7 @@
 
     @include ('inc/navbar')
 
-    <div class='container border-top p-0 overflow-hidden'>
+    <div class='border-top p-0 overflow-hidden'>
         @yield('content')
     </div>
 

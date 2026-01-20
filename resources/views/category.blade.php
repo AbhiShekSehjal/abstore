@@ -20,16 +20,59 @@
         padding-bottom: 30px;
     }
 
+    .productImage {
+        position: relative;
+        height: 400px;
+    }
+
+    .productImage img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        /* transition: all 0.5s ease; */
+    }
+
+    .productImage .main-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 1;
+        /* transition: opacity 0.5s ease; */
+    }
+
+    .productImage .hover-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        /* transition: opacity 0.5s ease; */
+    }
+
+    .productcard:hover .main-image {
+        opacity: 0;
+    }
+
+    .productcard:hover .hover-image {
+        opacity: 1;
+    }
+
     .card-img-top {
         height: 400px;
         object-fit: cover;
         border-radius: 0px;
     }
-
+/* 
     .productcard:hover .card-img-top {
         transform: scale(1.06);
         transition: all 0.5s ease;
-    }
+    } */
 
     .card-text {
         display: -webkit-box;
@@ -52,11 +95,17 @@
         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
             <div class="card rounded-0 productcard h-100">
                 <div class="productImage overflow-hidden">
-                    <a href="product/{{ $item->id }}">
+                    <a href="product/{{ $item->id }}" style="display: block; width: 100%; height: 100%;">
                         @if($item->image)
-                        <img src="{{ asset('storage/' . $item->image) }}" class="card-img-top">
+                        <img src="{{ asset('storage/' . $item->image) }}" class="card-img-top main-image">
                         @else
-                        <img src="{{ asset('images/no-image.png') }}" class="card-img-top">
+                        <img src="{{ asset('images/no-image.png') }}" class="card-img-top main-image">
+                        @endif
+                        
+                        @if($item->hoverProductImage)
+                        <img src="{{ asset('storage/' . $item->hoverProductImage) }}" class="card-img-top hover-image">
+                        @else
+                        <img src="{{ asset('images/no-image.png') }}" class="card-img-top hover-image">
                         @endif
                     </a>
                 </div>
