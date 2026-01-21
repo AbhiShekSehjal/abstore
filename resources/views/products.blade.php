@@ -87,15 +87,39 @@
         top: 80px;
     }
 
-    label{
+    label {
         cursor: pointer;
+    }
+
+    .productPageImage {
+        background: url('https://images.pexels.com/photos/11443064/pexels-photo-11443064.jpeg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 350px;
+    }
+
+    .productPageImage h1 {
+        position: relative;
+        color: white;
+        font-size: 42px;
+        background: rgba(0,0,0,0.5);
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 </style>
 @endpush
 
 @section('content')
 
+<div class="productPageImage">
+    <h1>Shop</h1>
+</div>
 <div class="container-fluid">
+
+
     <div class="row">
 
         <div class="d-lg-none mb-1 mt-2">
@@ -191,7 +215,7 @@
                                     @else
                                     <img src="{{ asset('images/no-image.png') }}" class="card-img-top main-image">
                                     @endif
-                                    
+
                                     @if($product->hoverProductImage)
                                     <img src="{{ asset('storage/' . $product->hoverProductImage) }}" class="card-img-top hover-image">
                                     @else

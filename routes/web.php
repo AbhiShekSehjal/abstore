@@ -32,6 +32,9 @@ Route::get('/about', [AboutController::class, 'index']);
 
 Route::get('/contact', [ContactController::class, 'index']);
 
+Route::post('/contact-submit', [ContactController::class, 'submit'])
+    ->name('contact.submit');
+
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 
 Route::post('/cart/increase', [CartController::class, 'increase'])->name('cart.increase');
@@ -58,7 +61,7 @@ Route::get('/buy-now/{product}', [CheckoutController::class, 'buyNow'])->name('b
 Route::put('/orders/{order}/address', [CheckoutController::class, 'updateAddress'])
     ->name('orders.updateAddress');
 
-    // Razorpay Payment Routes
+// Razorpay Payment Routes
 Route::post('/create-payment', [CheckoutController::class, 'createPayment'])
     ->name('payment.create');
 
