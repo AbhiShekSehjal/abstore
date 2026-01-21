@@ -55,7 +55,6 @@
         height: 100%;
         object-fit: cover;
         opacity: 0;
-        /* transition: opacity 0.5s ease; */
     }
 
     .productcard:hover .main-image {
@@ -71,11 +70,6 @@
         object-fit: cover;
         border-radius: 0 !important;
     }
-
-    /* .productcard:hover .card-img-top {
-        transform: scale(1.06);
-        transition: all 0.5s ease;
-    } */
 
     .card-text {
         display: -webkit-box;

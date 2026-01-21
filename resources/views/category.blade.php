@@ -6,14 +6,8 @@
 <style>
     .productcard {
         border: none;
-        border: 1px solid white;
         overflow: hidden;
         padding: 0;
-    }
-
-
-    .card {
-        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     }
 
     .card-body {
@@ -85,14 +79,15 @@
 
 @section('content')
 
-<div class="forthSection overflow-hidden">
+<div class="forthSection overflow-hidden container py-4">
     @if ($category->count() > 0)
     <h1 class='text-center mb-2 mt-2'>{{ $category->name }}</h1>
+    <p class="mt-2 text-center">{{ $category->description }}</p>
     @endif
 
     <div class="row g-1">
         @forelse($items as $item)
-        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
             <div class="card rounded-0 productcard h-100">
                 <div class="productImage overflow-hidden">
                     <a href="product/{{ $item->id }}" style="display: block; width: 100%; height: 100%;">
