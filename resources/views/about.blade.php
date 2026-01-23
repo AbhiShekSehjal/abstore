@@ -35,6 +35,60 @@
         height: 60vh;
         object-fit: cover;
     }
+
+    /* Responsive Styles for Medium Screens (576px - 768px) */
+    @media (min-width: 576px) and (max-width: 768px) {
+        .aboutUsContainer {
+            margin-top: 60px;
+        }
+
+        .heroContainer {
+            padding: 0 30px;
+        }
+
+        .aboutUsHeading {
+            font-size: 60px;
+            top: -40px;
+            right: 0;
+        }
+
+        .aboutUsText {
+            font-size: 14px;
+            top: -30px;
+        }
+
+        .abstoreMockup {
+            height: 40vh;
+        }
+    }
+
+    /* Responsive Styles for Small Screens (less than 576px) */
+    @media (max-width: 576px) {
+        .aboutUsContainer {
+            margin-top: 30px;
+        }
+
+        .heroContainer {
+            padding: 0 15px;
+        }
+
+        .aboutUsHeading {
+            font-size: 36px;
+            top: -20px;
+            right: 0;
+        }
+
+        .aboutUsText {
+            font-size: 13px;
+            top: -15px;
+            padding: 15px !important;
+        }
+
+        .abstoreMockup {
+            height: 35vh;
+            margin-top: 20px;
+        }
+    }
 </style>
 @endpush
 

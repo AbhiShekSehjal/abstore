@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('settings', function (Blueprint $table) {
-            $table->string('ORcode')->nullable();
+            // ORcode column already exists, skipping
+            // $table->string('ORcode')->nullable();
         });
     }
 

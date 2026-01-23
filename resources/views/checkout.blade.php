@@ -405,13 +405,13 @@
                 </h5>
 
                 @php
-                $subtotal = $order?->items->sum(fn($i) => $i->price * $i->quantity) ?? 0;
+                $subtotal = $order?->items->sum(fn($i) => $i->product->sale_price * $i->quantity) ?? 0;
                 @endphp
 
                 @foreach($order->items as $item)
                 <div class="d-flex justify-content-between mb-2">
                     <span>{{ $item->product->name }} × {{ $item->quantity }}</span>
-                    <span>₹{{ number_format($item->quantity * $item->price, 2) }}</span>
+                    <span>₹{{ number_format($item->quantity * $item->product->sale_price, 2) }}</span>
                 </div>
                 @endforeach
 

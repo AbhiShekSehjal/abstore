@@ -39,7 +39,7 @@ class Order extends Model
     {
         $total = 0;
         foreach ($this->items as $item) {
-            $total += $item->price * $item->quantity;
+            $total += $item->product->sale_price * $item->quantity;
         }
         return $total;
     }

@@ -1,3 +1,56 @@
+@push('styles')
+<style>
+    /* Small Screens (mobile) */
+    @media (max-width: 575.98px) {
+        .navbar {
+            padding: 0.5rem 0 !important;
+        }
+        .navbar-brand img {
+            width: 80px !important;
+        }
+        .navbar-toggler {
+            padding: 0.25rem 0.5rem;
+        }
+        .nav-link {
+            font-size: 13px;
+            padding: 0.5rem 0 !important;
+        }
+        .userName {
+            font-size: 11px;
+            white-space: normal;
+            margin-top: 10px;
+        }
+        #themeToggle {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    }
+
+    /* Tablet Screens */
+    @media (min-width: 576px) and (max-width: 991.98px) {
+        .navbar {
+            padding: 0.75rem 0 !important;
+        }
+        .navbar-brand img {
+            width: 120px !important;
+        }
+        .nav-link {
+            font-size: 13px;
+        }
+        .userName {
+            font-size: 12px;
+        }
+    }
+
+    /* Large Screens */
+    @media (min-width: 992px) {
+        .navbar-brand img {
+            width: 150px !important;
+        }
+    }
+</style>
+@endpush
+
 <nav class="navbar navbar-expand-lg bg-body-white">
     <div class="container px-0">
         <a class="navbar-brand" href="/admin/index"><img

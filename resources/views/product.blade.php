@@ -59,8 +59,8 @@
 
         <p>{{ $product->description }}</p>
 
-        <h5><span class="fw-bold fs-5">{{ $product->price }} &#8377;</span>
-            &nbsp;&nbsp;<del class="fs-6">{{ $product->sale_price }} &#8377;</del>
+        <h5><span class="fw-bold fs-5">{{ $product->sale_price }} &#8377;</span>
+            &nbsp;&nbsp;<del class="fs-6">{{ $product->price }} &#8377;</del>
         </h5>
 
         <p class="card-discount">{{ $product->discount }} % off</p>
@@ -111,8 +111,8 @@
                         <p class="card-text">{{ $product->description }}</p>
 
                         <p class="card-price mt-auto">
-                            <span class="fw-bold fs-5">{{ $product->price }} &#8377;</span>
-                            &nbsp;&nbsp;<del>{{ $product->sale_price }} &#8377;</del>
+                            <span class="fw-bold fs-5">{{ $product->sale_price }} &#8377;</span>
+                            &nbsp;&nbsp;<del>{{ $product->price }} &#8377;</del>
                         </p>
                         <p class="card-discount">{{ $product->discount }} % off</p>
 

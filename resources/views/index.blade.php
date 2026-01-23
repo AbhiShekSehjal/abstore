@@ -10,7 +10,7 @@
 
     .heroImage {
         width: 100%;
-        height: 85vh;
+        height: 60vh;
         object-fit: cover;
     }
 
@@ -65,7 +65,7 @@
 
     .splide__slide {
         position: relative;
-        height: 500px;
+        height: 450px;
     }
 
     .showMoreBtn:hover {
@@ -196,15 +196,15 @@
     <div class="splide splideMain">
         <div class="splide__track">
             <ul class="splide__list">
-                <li class="splide__slide w-100 h-100">@if($settings->slider_image_1)
+                <li class="splide__slide w-100 h-100">@if($settings && $settings->slider_image_1)
                     <img src="{{ asset('storage/' . $settings->slider_image_1) }}" alt="Slider 1" class='heroImage'>
                     @endif
                 </li>
-                <li class="splide__slide w-100">@if($settings->slider_image_2)
+                <li class="splide__slide w-100 h-100">@if($settings && $settings->slider_image_2)
                     <img src="{{ asset('storage/' . $settings->slider_image_2) }}" alt="Slider 2" class='heroImage'>
                     @endif
                 </li>
-                <li class="splide__slide w-100"> @if($settings->slider_image_3)
+                <li class="splide__slide w-100 h-100"> @if($settings && $settings->slider_image_3)
                     <img src="{{ asset('storage/' . $settings->slider_image_3) }}" alt="Slider 3" class='heroImage'>
                     @endif
                 </li>
@@ -217,11 +217,11 @@
 
     <div class="overfade"></div>
 
-    <div class="heroText">@if($settings->main_heading)
+    <div class="heroText">@if($settings && $settings->main_heading)
         {{$settings->main_heading}}
         @endif
         <p class='fs-6 opacity-75'>
-            @if($settings->main_pera)
+            @if($settings && $settings->main_pera)
             {{$settings->main_pera}}
             @endif
         </p>
@@ -265,7 +265,7 @@
         </div>
     </div>
 
-    @if($settings->Section_3_Image)
+    @if($settings && $settings->Section_3_Image)
     <section class="thirdSection p-5 mb-5">
         <div class="container">
             <div class="row align-items-center g-4">
@@ -283,14 +283,14 @@
                 <!-- RIGHT : TEXT -->
                 <div class="col-lg-6">
                     <div class="thirdSectionContent">
-                        @if($settings->Section_3_Text)
+                        @if($settings && $settings->Section_3_Text)
                         <h2 class="mb-3">
                             {{ $settings->Section_3_Text }}
                         </h2>
                         @endif
 
                         <p class="text-muted mb-4">
-                            {{ $settings->Section_3_Text2 }}
+                            {{ $settings && $settings->Section_3_Text2 ? $settings->Section_3_Text2 : '' }}
                         </p>
 
                         <a href="/products" class="btn btn-dark btn-lg rounded-0 px-5">
@@ -332,8 +332,8 @@
                         <p class="card-text">{{ $product->description }}</p>
 
                         <p class="card-price mt-auto">
-                            <span class="fw-bold fs-5">{{ $product->price }} &#8377;</span>
-                            &nbsp;&nbsp;<del>{{ $product->sale_price }} &#8377;</del>
+                            <span class="fw-bold fs-5">{{ $product->sale_price }} &#8377;</span>
+                            &nbsp;&nbsp;<del>{{ $product->price }} &#8377;</del>
                         </p>
                         <p class="card-discount">{{ $product->discount }} % off</p>
 

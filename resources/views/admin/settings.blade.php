@@ -57,7 +57,7 @@
         <div class="mb-3">
             <label for="sliderImage1" class="form-label">Slider Image 1</label>
             <div class="d-flex align-items-center justify-content-center gap-3">
-                <img src="{{ asset('storage/' . $settings->slider_image_1) }}" alt="slider_image_1" class="sliderImage"
+                <img src="{{ asset('storage/' . ($settings->slider_image_1 ?? '')) }}" alt="slider_image_1" class="sliderImage"
                     data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage(this.src)">
                 <input type="file" class="form-control" id="sliderImage1" name="slider_image_1" accept="image/*">
                 @if($errors->has('slider_image_1'))
@@ -68,7 +68,7 @@
         <div class="mb-3">
             <label for="sliderImage2" class="form-label">Slider Image 2</label>
             <div class="d-flex align-items-center justify-content-center gap-3">
-                <img src="{{ asset('storage/' . $settings->slider_image_2) }}" alt="slider_image_2" class="sliderImage"
+                <img src="{{ asset('storage/' . ($settings->slider_image_2 ?? '')) }}" alt="slider_image_2" class="sliderImage"
                     data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage(this.src)">
                 <input type="file" class="form-control" id="sliderImage2" name="slider_image_2" accept="image/*">
                 @if($errors->has('slider_image_2'))
@@ -79,7 +79,7 @@
         <div class="mb-3">
             <label for="sliderImage3" class="form-label">Slider Image 3</label>
             <div class="d-flex align-items-center justify-content-center gap-3">
-                <img src="{{ asset('storage/' . $settings->slider_image_3) }}" alt="slider_image_3" class="sliderImage"
+                <img src="{{ asset('storage/' . ($settings->slider_image_3 ?? '')) }}" alt="slider_image_3" class="sliderImage"
                     data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage(this.src)">
                 <input type="file" class="form-control" id="sliderImage3" name="slider_image_3" accept="image/*">
                 @if($errors->has('slider_image_3'))
@@ -94,14 +94,14 @@
 
         <div class="mb-3">
             <label for="mainHeading" class="form-label">Main Heading</label>
-            <input type="text" class="form-control" id="mainHeading" name="main_heading" value="@if($settings->main_heading){{$settings->main_heading}}@endif">
+            <input type="text" class="form-control" id="mainHeading" name="main_heading" value="{{ $settings->main_heading ?? '' }}">
             @if($errors->has('main_heading'))
             <small class="text-danger d-block mt-2">{{ $errors->first('main_heading') }}</small>
             @endif
         </div>
         <div class="mb-3">
             <label for="mainPera" class="form-label">Main Peragraph</label>
-            <input type="text" class="form-control" id="mainPera" name="main_pera" value="@if($settings->main_pera){{$settings->main_pera}}@endif">
+            <input type="text" class="form-control" id="mainPera" name="main_pera" value="{{ $settings->main_pera ?? '' }}">
             @if($errors->has('main_pera'))
             <small class="text-danger d-block mt-2">{{ $errors->first('main_pera') }}</small>
             @endif
@@ -109,7 +109,7 @@
         <div class="mb-3">
             <label for="logo" class="form-label">Logo</label>
             <div class="d-flex align-items-center justify-content-center gap-3">
-                <img src="{{ asset('storage/' . $settings->logo) }}" alt="logo" class="sliderImage"
+                <img src="{{ asset('storage/' . ($settings->logo ?? '')) }}" alt="logo" class="sliderImage"
                     data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage(this.src)">
                 <input type="file" class="form-control" id="logo" name="logo" accept="image/*">
                 @if($errors->has('logo'))
@@ -120,21 +120,21 @@
         <div class="row">
             <div class="mb-3 col-lg-4 col-md-4 col-sm-12">
                 <label for="intsaLink" class="form-label">Instagram Link</label>
-                <input type="text" class="form-control" id="intsaLink" name="intsaLink" value="@if($settings->intsaLink){{$settings->intsaLink}}@endif">
+                <input type="text" class="form-control" id="intsaLink" name="intsaLink" value="{{ $settings->intsaLink ?? '' }}">
                 @if($errors->has('intsaLink'))
                 <small class="text-danger d-block mt-2">{{ $errors->first('intsaLink') }}</small>
                 @endif
             </div>
             <div class="mb-3 col-lg-4 col-md-4 col-sm-12">
                 <label for="fbLink" class="form-label">Facebook Link</label>
-                <input type="text" class="form-control" id="fbLink" name="fbLink" value="@if($settings->fbLink){{$settings->fbLink}}@endif">
+                <input type="text" class="form-control" id="fbLink" name="fbLink" value="{{ $settings->fbLink ?? '' }}">
                 @if($errors->has('fbLink'))
                 <small class="text-danger d-block mt-2">{{ $errors->first('fbLink') }}</small>
                 @endif
             </div>
             <div class="mb-3 col-lg-4 col-md-4 col-sm-12">
                 <label for="twitterLink" class="form-label">Twitter Link</label>
-                <input type="text" class="form-control" id="twitterLink" name="twitterLink" value="@if($settings->twitterLink){{$settings->twitterLink}}@endif">
+                <input type="text" class="form-control" id="twitterLink" name="twitterLink" value="{{ $settings->twitterLink ?? '' }}">
                 @if($errors->has('twitterLink'))
                 <small class="text-danger d-block mt-2">{{ $errors->first('twitterLink') }}</small>
                 @endif
@@ -147,7 +147,7 @@
         <div class="mb-3">
             <label for="Section3Image" class="form-label">Section 3 Image</label>
             <div class="d-flex align-items-center justify-content-center gap-3">
-                <img src="{{ asset('storage/' . $settings->Section_3_Image) }}" alt="Section_3_Image" class="sliderImage"
+                <img src="{{ asset('storage/' . ($settings->Section_3_Image ?? '')) }}" alt="Section_3_Image" class="sliderImage"
                     data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage(this.src)">
                 <input type="file" class="form-control" id="Section3Image" name="Section_3_Image" accept="image/*">
                 @if($errors->has('Section_3_Image'))
@@ -157,14 +157,14 @@
         </div>
         <div class="mb-3">
             <label for="Section3Text" class="form-label">Section 3 Text</label>
-            <input type="text" class="form-control" id="Section3Text" name="Section_3_Text" value="@if($settings->Section_3_Text){{$settings->Section_3_Text}}@endif">
+            <input type="text" class="form-control" id="Section3Text" name="Section_3_Text" value="{{ $settings->Section_3_Text ?? '' }}">
             @if($errors->has('Section_3_Text'))
             <small class="text-danger d-block mt-2">{{ $errors->first('Section_3_Text') }}</small>
             @endif
         </div>
         <div class="mb-3">
             <label for="Section3Text2" class="form-label">Section 3 Text</label>
-            <input type="text" class="form-control" id="Section3Text2" name="Section_3_Text2" value="@if($settings->Section_3_Text){{$settings->Section_3_Text2}}@endif">
+            <input type="text" class="form-control" id="Section3Text2" name="Section_3_Text2" value="{{ $settings->Section_3_Text2 ?? '' }}">
             @if($errors->has('Section_3_Text2'))
             <small class="text-danger d-block mt-2">{{ $errors->first('Section_3_Text2') }}</small>
             @endif
@@ -176,7 +176,7 @@
         <div class="mb-3">
             <label for="ORcode" class="form-label">OR Code</label>
             <div class="d-flex align-items-center justify-content-center gap-3">
-                <img src="{{ asset('storage/' . $settings->ORcode) }}" alt="ORcode" class="sliderImage"
+                <img src="{{ asset('storage/' . ($settings->ORcode ?? '')) }}" alt="ORcode" class="sliderImage"
                     data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage(this.src)">
                 <input type="file" class="form-control" id="ORcode" name="ORcode" accept="image/*">
                 @if($errors->has('ORcode'))

@@ -50,7 +50,7 @@
     </div>
 
     <table class="table table-hover table-striped table-bordered">
-        <thead style="background-color: #2c3e50; color: white;">
+        <thead class="table-dark">
             <tr>
                 <th scope="col">Order ID</th>
                 <th scope="col">Customer Name</th>
@@ -71,7 +71,7 @@
                 <td>{{ $order->name }}</td>
                 <td>{{ $order->email }}</td>
                 <td>{{ $order->phone }}</td>
-                <td><strong>₹{{ number_format($order->items->sum(fn($i) => $i->price * $i->quantity), 2) }}</strong></td>
+                <td><strong>₹{{ number_format($order->items->sum(fn($i) => $i->product->sale_price * $i->quantity), 2) }}</strong></td>
 
                 <td>
                     <form action="{{ route('orders.updatePaymentStatus', $order->id) }}" method="POST" style="display: inline;">
@@ -167,14 +167,13 @@
                         </div>
                     </div>
                 </td>
-            </tr>
-            @endif
+                @endif
 
-            @empty
-            <tr>
-                <td colspan="8" class="text-center">
-                    <h4>No Orders Found</h4>
-                </td>
+                @empty
+
+                <div class="text-center">
+                    <h3>No Orders Found.</h3>
+                </div>
             </tr>
             @endforelse
         </tbody>

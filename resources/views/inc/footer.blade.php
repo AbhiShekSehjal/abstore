@@ -1,8 +1,79 @@
-<footer class="container footerContainer mt-5 border-top">
+@push('styles')
+<style>
+    .footerContainer {
+        padding: 0 15px !important;
+    }
+
+    /* Small Screens (mobile) */
+    @media (max-width: 575.98px) {
+        .footerContainer {
+            padding: 0 10px !important;
+        }
+        .footerContainer .col-sm-12 {
+            margin-bottom: 30px;
+            padding: 0 !important;
+        }
+        .navbar-brand.heading-font {
+            font-size: 1.25rem !important;
+        }
+        .navbar-brand.heading-font img {
+            width: 100px !important;
+        }
+        .footerPera {
+            width: 100% !important;
+            font-size: 12px;
+            margin-top: 15px !important;
+        }
+        .followUsHeading {
+            font-size: 15px;
+        }
+        .nav-link {
+            font-size: 13px;
+            padding-top: 8px !important;
+            padding-bottom: 8px !important;
+        }
+        .navbar-nav {
+            margin-bottom: 20px;
+        }
+    }
+
+    /* Tablet Screens */
+    @media (min-width: 576px) and (max-width: 991.98px) {
+        .footerContainer {
+            padding: 0 15px !important;
+        }
+        .navbar-brand.heading-font img {
+            width: 120px !important;
+        }
+        .footerPera {
+            width: 100% !important;
+            font-size: 13px;
+        }
+        .followUsHeading {
+            font-size: 16px;
+        }
+        .nav-link {
+            font-size: 14px;
+        }
+    }
+
+    /* Large Screens */
+    @media (min-width: 992px) {
+        .navbar-brand.heading-font img {
+            width: 150px !important;
+        }
+        .footerPera {
+            width: 75% !important;
+        }
+    }
+</style>
+@endpush
+
+<footer class="container footerContainer mt-5 border-top px-4">
     <div class="row py-4">
         <div class="col-lg-6 col-md-6 col-sm-12 p-0">
             <a class="navbar-brand heading-font fs-3 fw-bold" href="/">
-                @if($settings->logo)
+                @if($settings && $settings->logo)
                 <img
                     src="{{ asset('storage/' . $settings->logo) }}"
                     alt="abstore-logo" width='150'>
@@ -37,7 +108,7 @@
         <div class="col-lg-3 col-md-6 col-sm-12 p-0">
             <div class="followUs">
                 <h5 class="mb-4 followUsHeading"><b>Follow Us</b></h5>
-                @if($settings->intsaLink)
+                @if($settings && $settings->intsaLink)
                 <a href="{{$settings->intsaLink}}" class="text-decoration-none socialMediaLink py-2 d-block socialLink" target="_blank" rel="noopener noreferrer"
                     aria-label="Instagram link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                         fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16" aria-hidden="true"
@@ -47,7 +118,7 @@
                     </svg>&nbsp&nbspInstagram
                 </a>
                 @endif
-                @if($settings->fbLink)
+                @if($settings && $settings->fbLink)
                 <a href="{{$settings->fbLink}}" class="text-decoration-none socialMediaLink py-2 d-block socialLink" target="_blank" rel="noopener noreferrer"
                     aria-label="Facebook link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                         fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16" aria-hidden="true"
@@ -57,7 +128,7 @@
                     </svg>&nbsp&nbspFacebook
                 </a>
                 @endif
-                @if($settings->twitterLink)
+                @if($settings && $settings->twitterLink)
                 <a href="{{$settings->twitterLink}}" class="text-decoration-none socialMediaLink py-2 d-block socialLink" target="_blank" rel="noopener noreferrer"
                     aria-label="Twitter link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                         fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16" aria-hidden="true"

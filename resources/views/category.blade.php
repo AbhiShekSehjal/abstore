@@ -109,8 +109,8 @@
                     <p class="card-text">{{ $item->description }}</p>
 
                     <p class="card-price mt-auto">
-                        <span class="fw-bold fs-5">{{ $item->price }} &#8377;</span>
-                        &nbsp;&nbsp;<del>{{ $item->sale_price }} &#8377;</del>
+                        <span class="fw-bold fs-5">{{ $item->sale_price }} &#8377;</span>
+                        &nbsp;&nbsp;<del>{{ $item->price }} &#8377;</del>
                     </p>
                     <p class="card-discount">{{ $item->discount }} % off</p>
 

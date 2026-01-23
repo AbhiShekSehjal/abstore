@@ -776,7 +776,7 @@
                                     @endphp
                                     @foreach($order->items as $item)
                                     @php
-                                    $itemTotal = $item->price * $item->quantity;
+                                    $itemTotal = $item->product->sale_price * $item->quantity;
                                     $subtotal += $itemTotal;
                                     @endphp
                                     <tr>
@@ -784,7 +784,7 @@
                                             <a href="/product/{{ $item->product->id }}" class="product-name" target="_blank">{{ $item->product->name }}</a>
                                         </td>
                                         <td style="text-align: center; font-weight: 600;">{{ $item->quantity }}</td>
-                                        <td style="text-align: right;">₹{{ number_format($item->price, 2) }}</td>
+                                        <td style="text-align: right;">₹{{ number_format($item->product->sale_price, 2) }}</td>
                                         <td style="text-align: right; font-weight: 700; color: #1a1a1a;">₹{{ number_format($itemTotal, 2) }}</td>
                                     </tr>
                                     @endforeach
@@ -875,7 +875,7 @@
                         @endphp
                         @foreach($order->items as $item)
                         @php
-                        $itemTotal = $item->price * $item->quantity;
+                        $itemTotal = $item->product->sale_price * $item->quantity;
                         $subtotal += $itemTotal;
                         @endphp
                         <tr>
@@ -883,7 +883,7 @@
                                 <a href="/product/{{ $item->product->id }}" class="product-name" target="_blank">{{ $item->product->name }}</a>
                             </td>
                             <td style="text-align: center; font-weight: 600;">{{ $item->quantity }}</td>
-                            <td style="text-align: right;">₹{{ number_format($item->price, 2) }}</td>
+                            <td style="text-align: right;">₹{{ number_format($item->product->sale_price, 2) }}</td>
                             <td style="text-align: right; font-weight: 700;">₹{{ number_format($itemTotal, 2) }}</td>
                         </tr>
                         @endforeach

@@ -64,10 +64,68 @@
             cursor: pointer;
         }
 
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #111827;
+            --card-bg: #f3f4f6;
+        }
 
+        .dark-mode {
+            --bg-color: #1E1E1E;
+            --text-color: #E5E7EB;
+            --card-bg: white;
+        }
 
+        /* Use variables everywhere */
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
 
+        .card {
+            background-color: var(--card-bg);
+        }
 
+        .socialMediaLink {
+            mix-blend-mode: difference;
+            color: white;
+            opacity: 0.7;
+        }
+
+        /* Responsive adjustments for main content */
+        @media (max-width: 575.98px) {
+            body {
+                font-size: 14px;
+            }
+            h1 {
+                font-size: 28px !important;
+            }
+            h2 {
+                font-size: 22px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+            .container {
+                padding: 0 10px;
+            }
+        }
+
+        @media (min-width: 576px) and (max-width: 991.98px) {
+            body {
+                font-size: 15px;
+            }
+            h1 {
+                font-size: 32px !important;
+            }
+            h2 {
+                font-size: 24px;
+            }
+            h3 {
+                font-size: 19px;
+            }
+        }
 
 
 

@@ -48,6 +48,14 @@
     .related-product-card .card {
         height: 100%;
     }
+
+    /* Tablet */
+    /* @media (min-width: 600px) {
+        .checkout-summary{
+            position: static;
+            top: 0;left: 0;
+        }
+    } */
 </style>
 @endpush
 
@@ -84,7 +92,7 @@
                             </p>
 
                             <p class="fw-bold text-secondary">
-                                ₹ {{ number_format($item->price, 2) }}
+                                ₹ {{ number_format($item->product->sale_price, 2) }}
                             </p>
                         </div>
 
@@ -138,8 +146,8 @@
                                 <h6 class="card-title" style="font-size: 0.95rem;">{{ $product->name }}</h6>
                                 <p class="card-text" style="font-size: 0.85rem; color: #666;">{{ Str::limit($product->description, 50) }}</p>
                                 <p class="card-price mt-auto" style="margin-bottom: 10px;">
-                                    <span class="fw-bold" style="font-size: 1rem;">₹{{ $product->price }}</span>
-                                    &nbsp;&nbsp;<del style="font-size: 0.85rem; color: #999;">₹{{ $product->sale_price }}</del>
+                                    <span class="fw-bold" style="font-size: 1rem;">₹{{ $product->sale_price }}</span>
+                                    &nbsp;&nbsp;<del style="font-size: 0.85rem; color: #999;">₹{{ $product->price }}</del>
                                 </p>
                                 <p class="card-discount" style="font-size: 0.8rem; margin-bottom: 20px;">{{ $product->discount }}% off</p>
 
@@ -222,7 +230,7 @@
                 </h5>
 
                 @php
-                $subtotal = $order?->items->sum(fn($i) => $i->price * $i->quantity) ?? 0;
+                $subtotal = $order?->items->sum(fn($i) => $i->product->sale_price * $i->quantity) ?? 0;
                 @endphp
 
                 <div class="d-flex justify-content-between">
