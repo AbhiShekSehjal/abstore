@@ -33,6 +33,286 @@ use Illuminate\Support\Str;
     .card {
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
+
+    /* Responsive Media Queries */
+    @media (max-width: 991px) {
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+        }
+
+        h5 {
+            font-size: 1rem;
+        }
+
+        .row {
+            margin-left: -0.375rem;
+            margin-right: -0.375rem;
+        }
+
+        .row > [class*='col-'] {
+            padding-left: 0.375rem;
+            padding-right: 0.375rem;
+        }
+
+        .col-lg-4 {
+            flex: 0 0 100%;
+            max-width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .col-lg-6 {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+
+        .col-lg-12 {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+
+        .pie-chart-wrapper {
+            max-width: 200px;
+        }
+
+        .table-sm {
+            font-size: 0.8rem;
+        }
+
+        table thead th {
+            padding: 0.5rem 0.25rem;
+        }
+
+        table tbody td {
+            padding: 0.5rem 0.25rem;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+        }
+
+        p {
+            font-size: 0.9rem;
+        }
+
+        small {
+            font-size: 0.75rem;
+        }
+
+        .p-5 {
+            padding: 1.5rem !important;
+        }
+
+        .p-4 {
+            padding: 1rem !important;
+        }
+
+        .mt-5 {
+            margin-top: 1.5rem !important;
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem !important;
+        }
+    }
+
+    @media (max-width: 767px) {
+        h1 {
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            font-size: 1rem;
+        }
+
+        h5 {
+            font-size: 0.9rem;
+        }
+
+        .row {
+            margin-left: -0.25rem;
+            margin-right: -0.25rem;
+        }
+
+        .row > [class*='col-'] {
+            padding-left: 0.25rem;
+            padding-right: 0.25rem;
+        }
+
+        .col-lg-4,
+        .col-lg-6,
+        .col-lg-12 {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+
+        .pie-chart-wrapper {
+            max-width: 150px;
+        }
+
+        .table-sm {
+            font-size: 0.7rem;
+        }
+
+        table thead th {
+            padding: 0.35rem 0.15rem;
+        }
+
+        table tbody td {
+            padding: 0.35rem 0.15rem;
+        }
+
+        .badge {
+            font-size: 0.65rem;
+        }
+
+        p {
+            font-size: 0.8rem;
+        }
+
+        small {
+            font-size: 0.65rem;
+        }
+
+        .p-5 {
+            padding: 1rem !important;
+        }
+
+        .p-4 {
+            padding: 0.75rem !important;
+        }
+
+        .mt-5 {
+            margin-top: 1rem !important;
+        }
+
+        .mb-4 {
+            margin-bottom: 0.75rem !important;
+        }
+
+        .card-body {
+            padding: 1rem 0.75rem;
+        }
+
+        .card-header {
+            padding: 0.75rem !important;
+        }
+
+        .d-flex.justify-content-between {
+            gap: 0.5rem;
+        }
+
+        .opacity-75 {
+            font-size: 0.75rem !important;
+        }
+    }
+
+    @media (max-width: 576px) {
+        h1 {
+            font-size: 1.1rem;
+        }
+
+        h3 {
+            font-size: 0.9rem;
+        }
+
+        h5 {
+            font-size: 0.8rem;
+        }
+
+        .row {
+            margin-left: -0.125rem;
+            margin-right: -0.125rem;
+        }
+
+        .row > [class*='col-'] {
+            padding-left: 0.125rem;
+            padding-right: 0.125rem;
+        }
+
+        .col-lg-4,
+        .col-lg-6,
+        .col-lg-12 {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+
+        .pie-chart-wrapper {
+            max-width: 120px;
+        }
+
+        .table-sm {
+            font-size: 0.65rem;
+        }
+
+        table thead th {
+            padding: 0.25rem 0.1rem;
+        }
+
+        table tbody td {
+            padding: 0.25rem 0.1rem;
+        }
+
+        .badge {
+            font-size: 0.6rem;
+        }
+
+        p {
+            font-size: 0.75rem;
+        }
+
+        small {
+            font-size: 0.6rem;
+        }
+
+        .p-5 {
+            padding: 0.75rem !important;
+        }
+
+        .p-4 {
+            padding: 0.5rem !important;
+        }
+
+        .mt-5 {
+            margin-top: 0.75rem !important;
+        }
+
+        .mb-4 {
+            margin-bottom: 0.5rem !important;
+        }
+
+        .card-body {
+            padding: 0.75rem 0.5rem;
+        }
+
+        .card-header {
+            padding: 0.5rem !important;
+        }
+
+        .card-header h5 {
+            font-size: 0.75rem;
+        }
+
+        .d-flex.justify-content-between {
+            gap: 0.25rem;
+            flex-wrap: wrap;
+        }
+
+        .opacity-75 {
+            font-size: 0.65rem !important;
+        }
+
+        .border {
+            border-width: 1px !important;
+        }
+
+        .align-items-center {
+            gap: 0.5rem;
+        }
+    }
 </style>
 @endpush
 
@@ -42,22 +322,22 @@ use Illuminate\Support\Str;
 
 <div class="row d-flex flex-wrap">
     <a href='/admin/products'
-        class="col-lg-4 bg-secondary border p-5 text-white d-flex align-items-center justify-content-between countBox">
+        class="col-12 col-lg-4 bg-secondary border p-5 text-white d-flex align-items-center justify-content-between countBox">
         <h1>Products</h1>
         <h1><b>{{ $products->count() }}</b></h1>
     </a>
     <a href='/admin/categories'
-        class="col-lg-4 bg-secondary border p-5 text-white d-flex align-items-center justify-content-between countBox">
+        class="col-12 col-lg-4 bg-secondary border p-5 text-white d-flex align-items-center justify-content-between countBox">
         <h1>Categories</h1>
         <h1><b>{{ $categories->count() }}</b></h1>
     </a>
     <a href='/admin/orders'
-        class="col-lg-4 bg-secondary border p-5 text-white d-flex align-items-center justify-content-between countBox">
+        class="col-12 col-lg-4 bg-secondary border p-5 text-white d-flex align-items-center justify-content-between countBox">
         <h1>Orders</h1>
         <h1><b>{{ $orders->count() }}</b></h1>
     </a>
     <a href='/admin/users'
-        class="col-lg-4 bg-secondary border p-5 text-white d-flex align-items-center justify-content-between countBox">
+        class="col-12 col-lg-4 bg-secondary border p-5 text-white d-flex align-items-center justify-content-between countBox">
         <h1>Users</h1>
         <h1><b>{{ $users->count() }}</b></h1>
     </a>
@@ -66,18 +346,18 @@ use Illuminate\Support\Str;
 <!-- Revenue Statistics Section -->
 <div class="row d-flex flex-wrap mt-5">
     <h3 class="mb-4">Revenue Statistics</h3>
-    <div class="row d-flex flex-wrap">
-        <div class="col-lg-4 bg-secondary border p-4 text-white">
+    <div class="row d-flex flex-wrap w-100">
+        <div class="col-12 col-lg-4 bg-secondary border p-4 text-white">
             <h5>Total Revenue</h5>
             <h3><b>₹{{ number_format($totalRevenue ?? 0, 2) }}</b></h3>
             <small class="opacity-75">All time sales</small>
         </div>
-        <div class="col-lg-4 bg-secondary border p-4 text-white">
+        <div class="col-12 col-lg-4 bg-secondary border p-4 text-white">
             <h5>Today's Revenue</h5>
             <h3><b>₹{{ number_format($todayRevenue ?? 0, 2) }}</b></h3>
             <small class="opacity-75">Today's sales</small>
         </div>
-        <div class="col-lg-4 bg-secondary border p-4 text-white">
+        <div class="col-12 col-lg-4 bg-secondary border p-4 text-white">
             <h5>This Month Revenue</h5>
             <h3><b>₹{{ number_format($monthRevenue ?? 0, 2) }}</b></h3>
             <small class="opacity-75">{{ date('F Y') }}</small>
@@ -89,10 +369,8 @@ use Illuminate\Support\Str;
 <div class="row mt-5">
     <h3 class="mb-4">Business Analytics</h3>
 
-
-
     <!-- Sales by Category Chart -->
-    <div class="col-lg-6 mb-4">
+    <div class="col-12 col-lg-6 mb-4">
         <div class="card h-100 rounded-0">
             <div class="card-header bg-dark text-white rounded-0">
                 <h5 class="mb-0">Sales by Category</h5>
@@ -106,7 +384,7 @@ use Illuminate\Support\Str;
     </div>
 
     <!-- Order Status Distribution -->
-    <div class="col-lg-6 mb-4">
+    <div class="col-12 col-lg-6 mb-4">
         <div class="card h-100 rounded-0">
             <div class="card-header bg-dark text-white rounded-0">
                 <h5 class="mb-0">Order Status Distribution</h5>
@@ -120,7 +398,7 @@ use Illuminate\Support\Str;
     </div>
 
     <!-- Revenue Trend Chart -->
-    <div class="col-lg-6 mb-4">
+    <div class="col-12 col-lg-6 mb-4">
         <div class="card h-100 rounded-0">
             <div class="card-header bg-dark text-white rounded-0">
                 <h5 class="mb-0">Revenue Trend (Last 7 Days)</h5>
@@ -132,7 +410,7 @@ use Illuminate\Support\Str;
     </div>
 
     <!-- Payment Method Distribution -->
-    <div class="col-lg-6 mb-4">
+    <div class="col-12 col-lg-6 mb-4">
         <div class="card h-100 rounded-0">
             <div class="card-header bg-dark text-white rounded-0">
                 <h5 class="mb-0">Payment Methods</h5>
@@ -146,7 +424,7 @@ use Illuminate\Support\Str;
     </div>
 
     <!-- Monthly Revenue Comparison -->
-    <div class="col-lg-12 mb-4">
+    <div class="col-12 mb-4">
         <div class="card h-100 rounded-0">
             <div class="card-header bg-dark text-white rounded-0">
                 <h5 class="mb-0">Monthly Revenue Comparison (Last 6 Months)</h5>
@@ -157,10 +435,11 @@ use Illuminate\Support\Str;
         </div>
     </div>
 </div>
+
 <div class="row mt-4">
     <h3 class="mb-4">Order Overview</h3>
 
-    <div class="col-lg-6 mb-4">
+    <div class="col-12 col-lg-6 mb-4">
         <div class="card h-100 rounded-0">
             <div class="card-header bg-dark text-white rounded-0">
                 <h5 class="mb-0">Order Status Breakdown</h5>
@@ -190,7 +469,7 @@ use Illuminate\Support\Str;
         </div>
     </div>
 
-    <div class="col-lg-6 mb-4">
+    <div class="col-12 col-lg-6 mb-4">
         <div class="card h-100 rounded-0">
             <div class="card-header bg-dark text-white rounded-0">
                 <h5 class="mb-0">Payment Status Breakdown</h5>
@@ -223,7 +502,7 @@ use Illuminate\Support\Str;
                 <h5 class="mb-0">Latest 5 Orders</h5>
             </div>
             <div class="table-responsive">
-                <table class="table table-hover mb-0">
+                <table class="table table-hover mb-0 table-sm">
                     <thead class="table-light">
                         <tr>
                             <th>Order ID</th>
@@ -268,7 +547,7 @@ use Illuminate\Support\Str;
 <div class="row mt-5">
     <h3 class="mb-4">Inventory & Sales</h3>
 
-    <div class="col-lg-6 mb-4">
+    <div class="col-12 col-lg-6 mb-4">
         <div class="card h-100 rounded-0">
             <div class="card-header bg-dark text-white rounded-0">
                 <h5 class="mb-0">Top Selling Products</h5>
@@ -308,7 +587,7 @@ use Illuminate\Support\Str;
         </div>
     </div>
 
-    <div class="col-lg-6 mb-4">
+    <div class="col-12 col-lg-6 mb-4">
         <div class="card h-100 rounded-0">
             <div class="card-header bg-dark text-white rounded-0">
                 <h5 class="mb-0">Low Stock Alerts <span class="badge bg-danger">{{ $lowStockCount ?? 0 }}</span></h5>
@@ -350,23 +629,20 @@ use Illuminate\Support\Str;
 </div>
 
 <!-- Customer Statistics -->
-
-
-
 <div class="row p-3 d-flex flex-wrap">
     <h3 class="mb-4 p-0">Customer Insights</h3>
-    <div class="row d-flex flex-wrap">
-        <div class="col-lg-4 bg-secondary border p-4 text-white">
+    <div class="row d-flex flex-wrap w-100">
+        <div class="col-12 col-lg-4 bg-secondary border p-4 text-white">
             <h5>Total Customers</h5>
             <h3><b>{{ $totalCustomers ?? 0 }}</b></h3>
             <small class="opacity-75">Registered users</small>
         </div>
-        <div class="col-lg-4 bg-secondary border p-4 text-white">
+        <div class="col-12 col-lg-4 bg-secondary border p-4 text-white">
             <h5>New Customers</h5>
             <h3><b>{{ $newCustomersThisMonth ?? 0 }}</b></h3>
             <small class="opacity-75">This month</small>
         </div>
-        <div class="col-lg-4 bg-secondary border p-4 text-white">
+        <div class="col-12 col-lg-4 bg-secondary border p-4 text-white">
             <h5>Repeat Customers</h5>
             <h3><b>{{ $repeatCustomers ?? 0 }}</b></h3>
             <small class="opacity-75">2+ orders</small>

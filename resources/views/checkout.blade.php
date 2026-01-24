@@ -4,9 +4,9 @@
 @push('styles')
 <style>
     .checkout-summary {
-        position: fixed;
-        top: 100px;
-        width: 416px;
+        position: fixed !important;
+        top: 100px !important;
+        width: 416px !important;
     }
 
     .payment-card {
@@ -162,6 +162,14 @@
         margin-top: 20px;
         font-size: 16px;
         font-weight: 500;
+    }
+
+    /* mobile screen */
+    @media screen and (max-width: 600px) {
+        .checkout-summary {
+            position: static !important;
+            width: 100% !important;
+        }
     }
 </style>
 @endpush

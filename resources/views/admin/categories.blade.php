@@ -24,11 +24,83 @@
     }
 
     .categoryDescription {
-        /* display: -webkit-box; */
         line-clamp: 1;
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
         overflow: hidden;
+    }
+
+    /* Small screens */
+    @media (max-width: 575.98px) {
+        .container {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .d-flex.align-items-center.justify-content-between.mb-1 {
+            flex-direction: column;
+            align-items: flex-start !important;
+            gap: 1rem;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        .row.g-3 {
+            flex-direction: column;
+            gap: 0.75rem !important;
+        }
+
+        .row.g-3 > div,
+        .row.g-3 > button {
+            width: 100% !important;
+        }
+
+        .table {
+            font-size: 0.85rem;
+        }
+
+        .table th, .table td {
+            padding: 0.5rem 0.25rem !important;
+        }
+
+        .btn {
+            padding: 0.25rem 0.5rem !important;
+            font-size: 0.75rem !important;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        .categoryImage {
+            width: 35px;
+            height: 35px;
+        }
+
+        .modal-body {
+            padding: 1rem 0.75rem;
+        }
+
+        .form-control, .form-select {
+            font-size: 0.9rem;
+        }
+    }
+
+    /* Medium screens */
+    @media (min-width: 576px) and (max-width: 991.98px) {
+        .table {
+            font-size: 0.9rem;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+        }
+
+        .row.g-3 {
+            gap: 0.75rem !important;
+        }
     }
 </style>
 @endpush
@@ -46,8 +118,8 @@
 
 
         <!-- Search and Sort Section -->
-        <div class="row g-3">
-            <div class="col-md-6">
+        <div class="row g-3 w-100 w-md-auto">
+            <div class="col-12 col-md-6 col-lg-6">
                 <form method="GET" action="{{ route('admin.categories') }}" class="d-flex gap-2">
                     <input type="text" name="search" class="form-control rounded-0" placeholder="Search categories by name or description..." value="{{ $search ?? '' }}">
                     <input type="hidden" name="sort" value="{{ $sort ?? 'name_asc' }}">
@@ -58,7 +130,7 @@
                 </form>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-12 col-md-3 col-lg-3">
                 <form method="GET" action="{{ route('admin.categories') }}" class="d-flex gap-2">
                     <select name="sort" class="form-select rounded-0" onchange="this.form.submit()">
                         <option value="name_asc" {{ ($sort ?? 'name_asc') === 'name_asc' ? 'selected' : '' }}>Sort: Name (A-Z)</option>
@@ -70,7 +142,7 @@
                 </form>
             </div>
 
-            <button type="button" class="col-md-3 btn btn-outline-dark rounded-0 addCategoryBtn" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
+            <button type="button" class="col-12 col-md-3 col-lg-3 btn btn-outline-dark rounded-0 addCategoryBtn" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
                 Add category
             </button>
 
@@ -217,6 +289,7 @@
         </div>
     </div>
 
+    <div class="table-responsive">
     <table class="table table-hover table-striped table-bordered">
         <thead class="table-dark">
             <tr>
@@ -274,6 +347,7 @@
             @endforelse
         </tbody>
     </table>
+    </div>
 
     <!-- Pagination -->
     <div class="mt-4 ms-auto">

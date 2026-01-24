@@ -17,13 +17,290 @@
     .sliderImage:hover {
         border: 2px solid grey;
     }
+
+    /* Responsive Media Queries */
+    @media (max-width: 991px) {
+        .container.py-4 {
+            padding-left: 0.75rem !important;
+            padding-right: 0.75rem !important;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+        }
+
+        .form-control,
+        .form-label {
+            font-size: 0.875rem;
+            padding: 0.5rem 0.75rem;
+        }
+
+        .form-label {
+            padding: 0;
+            margin-bottom: 0.35rem;
+        }
+
+        .d-flex.align-items-center.justify-content-center.gap-3 {
+            flex-direction: column;
+            align-items: flex-start !important;
+            gap: 1rem !important;
+        }
+
+        .d-flex.align-items-center.justify-content-center.gap-3 input {
+            width: 100%;
+        }
+
+        .sliderImage {
+            width: 40px;
+            height: 40px;
+        }
+
+        .btn {
+            font-size: 0.875rem;
+            padding: 0.5rem 0.75rem;
+        }
+
+        .row {
+            margin-left: -0.375rem;
+            margin-right: -0.375rem;
+        }
+
+        .row > [class*='col-'] {
+            padding-left: 0.375rem;
+            padding-right: 0.375rem;
+        }
+
+        .col-lg-4 {
+            flex: 0 0 100%;
+            max-width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .mb-3 {
+            margin-bottom: 1rem !important;
+        }
+
+        .mb-4 {
+            margin-bottom: 1.5rem !important;
+        }
+
+        .alert {
+            font-size: 0.875rem;
+            padding: 0.75rem;
+        }
+
+        .alert ul {
+            margin-bottom: 0;
+        }
+
+        .alert li {
+            margin-bottom: 0.25rem;
+        }
+
+        small {
+            font-size: 0.75rem;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .container.py-4 {
+            padding-left: 0.5rem !important;
+            padding-right: 0.5rem !important;
+        }
+
+        h1 {
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            font-size: 1rem;
+        }
+
+        .form-control,
+        .form-label {
+            font-size: 0.8rem;
+            padding: 0.4rem 0.6rem;
+        }
+
+        .form-label {
+            padding: 0;
+            margin-bottom: 0.25rem;
+        }
+
+        .d-flex.align-items-center.justify-content-center.gap-3 {
+            flex-direction: column;
+            align-items: flex-start !important;
+            gap: 0.75rem !important;
+        }
+
+        .d-flex.align-items-center.justify-content-center.gap-3 input {
+            width: 100%;
+        }
+
+        .sliderImage {
+            width: 35px;
+            height: 35px;
+        }
+
+        .btn {
+            font-size: 0.8rem;
+            padding: 0.4rem 0.6rem;
+        }
+
+        .row {
+            margin-left: -0.25rem;
+            margin-right: -0.25rem;
+        }
+
+        .row > [class*='col-'] {
+            padding-left: 0.25rem;
+            padding-right: 0.25rem;
+        }
+
+        .col-lg-4,
+        .col-md-4 {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+
+        .col-sm-12 {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+
+        .mb-3 {
+            margin-bottom: 0.75rem !important;
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem !important;
+        }
+
+        .alert {
+            font-size: 0.8rem;
+            padding: 0.5rem;
+        }
+
+        .alert ul {
+            margin-bottom: 0;
+        }
+
+        .alert li {
+            margin-bottom: 0.15rem;
+            font-size: 0.75rem;
+        }
+
+        small {
+            font-size: 0.7rem;
+        }
+
+        br {
+            display: none;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .container.py-4 {
+            padding: 0.5rem !important;
+        }
+
+        h1 {
+            font-size: 1.1rem;
+        }
+
+        h3 {
+            font-size: 0.9rem;
+        }
+
+        .form-control,
+        .form-label {
+            font-size: 0.75rem;
+            padding: 0.35rem 0.5rem;
+        }
+
+        .form-label {
+            padding: 0;
+            margin-bottom: 0.2rem;
+        }
+
+        .d-flex.align-items-center.justify-content-center.gap-3 {
+            flex-direction: column;
+            align-items: flex-start !important;
+            gap: 0.5rem !important;
+        }
+
+        .d-flex.align-items-center.justify-content-center.gap-3 input {
+            width: 100%;
+        }
+
+        .sliderImage {
+            width: 30px;
+            height: 30px;
+        }
+
+        .btn {
+            font-size: 0.75rem;
+            padding: 0.35rem 0.5rem;
+        }
+
+        .row {
+            margin-left: -0.125rem;
+            margin-right: -0.125rem;
+        }
+
+        .row > [class*='col-'] {
+            padding-left: 0.125rem;
+            padding-right: 0.125rem;
+        }
+
+        .col-lg-4,
+        .col-md-4,
+        .col-sm-12 {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+
+        .mb-3 {
+            margin-bottom: 0.5rem !important;
+        }
+
+        .mb-4 {
+            margin-bottom: 0.75rem !important;
+        }
+
+        .alert {
+            font-size: 0.75rem;
+            padding: 0.4rem;
+        }
+
+        .alert ul {
+            margin-bottom: 0;
+            padding-left: 1rem;
+        }
+
+        .alert li {
+            margin-bottom: 0.1rem;
+            font-size: 0.7rem;
+        }
+
+        small {
+            font-size: 0.65rem;
+        }
+
+        br {
+            display: none;
+        }
+    }
 </style>
 @endpush
 
 @section('content')
 
 <div class="container py-4">
-
 
     <div class="modal fade" id="imageModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-md">
@@ -33,7 +310,6 @@
             </div>
         </div>
     </div>
-
 
     @if($errors->any())
     <div class="alert alert-danger">
@@ -118,21 +394,21 @@
             </div>
         </div>
         <div class="row">
-            <div class="mb-3 col-lg-4 col-md-4 col-sm-12">
+            <div class="mb-3 col-12 col-lg-4 col-md-4 col-sm-12">
                 <label for="intsaLink" class="form-label">Instagram Link</label>
                 <input type="text" class="form-control" id="intsaLink" name="intsaLink" value="{{ $settings->intsaLink ?? '' }}">
                 @if($errors->has('intsaLink'))
                 <small class="text-danger d-block mt-2">{{ $errors->first('intsaLink') }}</small>
                 @endif
             </div>
-            <div class="mb-3 col-lg-4 col-md-4 col-sm-12">
+            <div class="mb-3 col-12 col-lg-4 col-md-4 col-sm-12">
                 <label for="fbLink" class="form-label">Facebook Link</label>
                 <input type="text" class="form-control" id="fbLink" name="fbLink" value="{{ $settings->fbLink ?? '' }}">
                 @if($errors->has('fbLink'))
                 <small class="text-danger d-block mt-2">{{ $errors->first('fbLink') }}</small>
                 @endif
             </div>
-            <div class="mb-3 col-lg-4 col-md-4 col-sm-12">
+            <div class="mb-3 col-12 col-lg-4 col-md-4 col-sm-12">
                 <label for="twitterLink" class="form-label">Twitter Link</label>
                 <input type="text" class="form-control" id="twitterLink" name="twitterLink" value="{{ $settings->twitterLink ?? '' }}">
                 @if($errors->has('twitterLink'))

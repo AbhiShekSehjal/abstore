@@ -5,9 +5,9 @@
 @push('styles')
 <style>
     .checkout-summary {
-        position: fixed;
-        top: 100px;
-        width: 416px;
+        position: fixed !important;
+        top: 100px !important;
+        width: 416px !important;
     }
 
     .related-products-section {
@@ -49,13 +49,13 @@
         height: 100%;
     }
 
-    /* Tablet */
-    /* @media (min-width: 600px) {
-        .checkout-summary{
-            position: static;
-            top: 0;left: 0;
+    /* mobile screen */
+    @media screen and (max-width: 600px) {
+        .checkout-summary {
+            position: static !important;
+            width: 100% !important;
         }
-    } */
+    }
 </style>
 @endpush
 
