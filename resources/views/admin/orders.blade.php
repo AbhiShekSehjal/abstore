@@ -188,7 +188,7 @@
 
 @section('content')
 
-<div class="container py-4">
+<div class="container py-4 px-0">
 
     <div class="d-flex align-items-center justify-content-between mb-1">
         <div class="d-flex align-items-start">
@@ -198,7 +198,7 @@
 
         <!-- Search and Sort Section -->
         <div class="row g-3 w-100">
-            <div class="col-12 col-md-6">
+            <div class="col-sm-3 col-lg-3 col-md-6 ms-auto">
                 <form method="GET" action="{{ route('admin.orders') }}" class="d-flex gap-2">
                     <input type="text" name="search" class="form-control rounded-0" placeholder="Search orders by customer name, email, or order ID..." value="{{ $search ?? '' }}">
                     <input type="hidden" name="sort" value="{{ $sort ?? 'newest' }}">
@@ -209,7 +209,7 @@
                 </form>
             </div>
 
-            <div class="col-12 col-md-6">
+            <div class="col-sm-3 col-lg-3 col-md-6">
                 <form method="GET" action="{{ route('admin.orders') }}" class="d-flex gap-2">
                     <select name="sort" class="form-select rounded-0" onchange="this.form.submit()">
                         <option value="newest" {{ ($sort ?? 'newest') === 'newest' ? 'selected' : '' }}>Sort: Newest First</option>

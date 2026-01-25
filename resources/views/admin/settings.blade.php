@@ -300,7 +300,7 @@
 
 @section('content')
 
-<div class="container py-4">
+<div class="container py-4 px-0">
 
     <div class="modal fade" id="imageModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-md">

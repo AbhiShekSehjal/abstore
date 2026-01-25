@@ -52,8 +52,8 @@
             gap: 0.75rem !important;
         }
 
-        .row.g-3 > div,
-        .row.g-3 > button {
+        .row.g-3>div,
+        .row.g-3>button {
             width: 100% !important;
         }
 
@@ -61,7 +61,8 @@
             font-size: 0.85rem;
         }
 
-        .table th, .table td {
+        .table th,
+        .table td {
             padding: 0.5rem 0.25rem !important;
         }
 
@@ -83,7 +84,8 @@
             padding: 1rem 0.75rem;
         }
 
-        .form-control, .form-select {
+        .form-control,
+        .form-select {
             font-size: 0.9rem;
         }
     }
@@ -107,7 +109,7 @@
 
 @section('content')
 
-<div class="container py-4">
+<div class="container py-4 px-0">
 
     <div class="d-flex align-items-center justify-content-between mb-1">
 
@@ -118,8 +120,8 @@
 
 
         <!-- Search and Sort Section -->
-        <div class="row g-3 w-100 w-md-auto">
-            <div class="col-12 col-md-6 col-lg-6">
+        <div class="row g-2 w-100 w-md-auto">
+            <div class="col-sm-3 col-lg-3 col-md-6 ms-auto">
                 <form method="GET" action="{{ route('admin.categories') }}" class="d-flex gap-2">
                     <input type="text" name="search" class="form-control rounded-0" placeholder="Search categories by name or description..." value="{{ $search ?? '' }}">
                     <input type="hidden" name="sort" value="{{ $sort ?? 'name_asc' }}">
@@ -130,7 +132,7 @@
                 </form>
             </div>
 
-            <div class="col-12 col-md-3 col-lg-3">
+            <div class="col-sm-3 col-lg-3 col-md-6 me-2">
                 <form method="GET" action="{{ route('admin.categories') }}" class="d-flex gap-2">
                     <select name="sort" class="form-select rounded-0" onchange="this.form.submit()">
                         <option value="name_asc" {{ ($sort ?? 'name_asc') === 'name_asc' ? 'selected' : '' }}>Sort: Name (A-Z)</option>
@@ -142,11 +144,11 @@
                 </form>
             </div>
 
-            <button type="button" class="col-12 col-md-3 col-lg-3 btn btn-outline-dark rounded-0 addCategoryBtn" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
-                Add category
-            </button>
-
         </div>
+
+        <button type="button" class="col-sm-3 col-lg-2 col-md-6 btn btn-outline-dark rounded-0 addCategoryBtn ms-auto" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
+            Add category
+        </button>
     </div>
 
 
@@ -290,63 +292,63 @@
     </div>
 
     <div class="table-responsive">
-    <table class="table table-hover table-striped table-bordered">
-        <thead class="table-dark">
-            <tr>
-                <th scope="col">Image</th>
-                <th scope="col">Name</th>
-                <th scope="col">Slug</th>
-                <th scope="col">Description</th>
-                <th scope="col">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+        <table class="table table-hover table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Image</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Slug</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
 
-            @forelse($categories as $category)
-            <tr>
-                <td>
-                    <img src="{{ asset('storage/' . $category->category_image) }}" alt="Section_3_Image" class="categoryImage"
-                        data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage(this.src)">
-                </td>
-                <td>{{$category->name}}</td>
-                <td>{{$category->slug}}</td>
-                <td class="categoryDescription">{{$category->description}}</td>
-                <td>
-                    <button type="button" class="btn rounded-0 btn-sm  view-category-btn" data-bs-toggle="modal" data-bs-target="#viewCategoryModal"
-                        data-id="{{ $category->id }}"
-                        data-name="{{ $category->name }}"
-                        data-slug="{{ $category->slug }}"
-                        data-description="{{ $category->description }}"
-                        data-image="{{ asset('storage/' . $category->category_image) }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
-                            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
-                        </svg>
-                    </button>
-                    <button type="button" class="btn rounded-0 btn-sm edit-category-btn" data-bs-toggle="modal" data-bs-target="#editCategoryModal"
-                        data-id="{{ $category->id }}"
-                        data-name="{{ $category->name }}"
-                        data-description="{{ $category->description }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
-                            <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001" />
-                        </svg>
-                    </button>
-                    <button type="button" class="btn rounded-0 btn-sm delete-category-btn" data-bs-toggle="modal" data-bs-target="#deleteCategoryModal"
-                        data-id="{{ $category->id }}"
-                        data-name="{{ $category->name }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                            <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5" />
-                        </svg>
-                    </button>
-                </td>
-                @empty
-                <div class="text-center">
-                    <h3>No Category Found.</h3>
-                </div>
-            </tr>
-            @endforelse
-        </tbody>
-    </table>
+                @forelse($categories as $category)
+                <tr>
+                    <td>
+                        <img src="{{ asset('storage/' . $category->category_image) }}" alt="Section_3_Image" class="categoryImage"
+                            data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage(this.src)">
+                    </td>
+                    <td>{{$category->name}}</td>
+                    <td>{{$category->slug}}</td>
+                    <td class="categoryDescription">{{$category->description}}</td>
+                    <td>
+                        <button type="button" class="btn rounded-0 btn-sm  view-category-btn" data-bs-toggle="modal" data-bs-target="#viewCategoryModal"
+                            data-id="{{ $category->id }}"
+                            data-name="{{ $category->name }}"
+                            data-slug="{{ $category->slug }}"
+                            data-description="{{ $category->description }}"
+                            data-image="{{ asset('storage/' . $category->category_image) }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
+                                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
+                            </svg>
+                        </button>
+                        <button type="button" class="btn rounded-0 btn-sm edit-category-btn" data-bs-toggle="modal" data-bs-target="#editCategoryModal"
+                            data-id="{{ $category->id }}"
+                            data-name="{{ $category->name }}"
+                            data-description="{{ $category->description }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+                                <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001" />
+                            </svg>
+                        </button>
+                        <button type="button" class="btn rounded-0 btn-sm delete-category-btn" data-bs-toggle="modal" data-bs-target="#deleteCategoryModal"
+                            data-id="{{ $category->id }}"
+                            data-name="{{ $category->name }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                                <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5" />
+                            </svg>
+                        </button>
+                    </td>
+                    @empty
+                    <div class="text-center">
+                        <h3>No Category Found.</h3>
+                    </div>
+                </tr>
+                @endforelse
+            </tbody>
+        </table>
     </div>
 
     <!-- Pagination -->

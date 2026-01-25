@@ -202,7 +202,7 @@
 @endpush
 
 @section('content')
-<div class="container py-4">
+<div class="container py-4 px-0">
 
     <div class="d-flex align-items-center justify-content-between mb-1">
 
@@ -213,8 +213,8 @@
 
 
         <!-- Search and Sort Section -->
-        <div class="row g-3 w-100">
-            <div class="col-12 col-md-6">
+        <div class="row g-2 w-100">
+            <div class="col-sm-3 col-lg-3 col-md-6 ms-auto">
                 <form method="GET" action="{{ route('admin.products') }}" class="d-flex gap-2">
                     <input type="text" name="search" class="form-control rounded-0" placeholder="Search products by name or description..." value="{{ $search ?? '' }}">
                     <input type="hidden" name="sort" value="{{ $sort ?? 'name_asc' }}">
@@ -225,7 +225,7 @@
                 </form>
             </div>
 
-            <div class="col-12 col-md-3">
+            <div class="col-sm-3 col-lg-3 col-md-6 me-2">
                 <form method="GET" action="{{ route('admin.products') }}" class="d-flex gap-2">
                     <select name="sort" class="form-select rounded-0" onchange="this.form.submit()">
                         <option value="name_asc" {{ ($sort ?? 'name_asc') === 'name_asc' ? 'selected' : '' }}>Sort: Name (A-Z)</option>
@@ -240,10 +240,10 @@
                     <input type="hidden" name="search" value="{{ $search ?? '' }}">
                 </form>
             </div>
-            <button type="button" class="col-12 col-md-3 btn btn-outline-dark rounded-0 addProductBtn" data-bs-toggle="modal" data-bs-target="#addProductModal">
-                Add Product
-            </button>
         </div>
+        <button type="button" class="col-sm-3 col-lg-3 col-md-6 btn btn-outline-dark rounded-0 addProductBtn ms-auto" data-bs-toggle="modal" data-bs-target="#addProductModal">
+            Add Product
+        </button>
     </div>
 
     <div class="modal fade" id="addProductModal" tabindex="-1">

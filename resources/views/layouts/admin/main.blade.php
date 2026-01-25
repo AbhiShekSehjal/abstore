@@ -109,7 +109,7 @@
 
     @include ('inc/admin/navbar')
 
-    <div class='container border-top p-0 overflow-hidden'>
+    <div class='container border-top p-0 overflow-hidden px-2'>
         @yield('content')
     </div>
 

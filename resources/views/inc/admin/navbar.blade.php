@@ -51,7 +51,7 @@
 </style>
 @endpush
 
-<nav class="navbar navbar-expand-lg bg-body-white">
+<nav class="navbar navbar-expand-lg bg-body-white px-2">
     <div class="container px-0">
         <a class="navbar-brand" href="/admin/index"><img
                 src="https://res.cloudinary.com/djmmx0tri/image/upload/v1763620634/Group_1_rlhqbh.png"
