@@ -4,6 +4,10 @@
 
 @push('styles')
 <style>
+    /* ===============================
+       DEFAULT/DESKTOP STYLES
+    =============================== */
+    
     .banner {
         position: relative;
     }
@@ -25,6 +29,12 @@
         transform: translate(-50%, -50%);
         width: 100%;
         text-align: center;
+        padding: 0 20px;
+    }
+
+    .heroText p {
+        font-size: 1.2rem;
+        margin-top: 20px;
     }
 
     .overfade {
@@ -61,6 +71,7 @@
         left: 15px;
         font-size: 50px;
         color: white;
+        font-weight: 600;
     }
 
     .splide__slide {
@@ -79,6 +90,7 @@
     }
 
     .card-body {
+        padding: 15px;
         padding-bottom: 30px;
     }
 
@@ -127,14 +139,11 @@
         opacity: 1;
     }
 
-    /* .productcard:hover .card-img-top {
-        transform: scale(1.06);
-        transition: all 0.5s ease;
-    } */
-
     .productHeading {
         font-size: 60px;
         text-align: center;
+        font-weight: 700;
+        margin-bottom: 50px;
     }
 
     .card-text {
@@ -142,6 +151,25 @@
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
         overflow: hidden;
+        font-size: 0.95rem;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .card-price {
+        margin: 0;
+        padding: 5px 0;
+    }
+
+    .card-discount {
+        font-size: 0.85rem;
+        color: #28a745;
+        font-weight: 600;
+        margin: 5px 0;
     }
 
     .thirdSection {
@@ -173,19 +201,300 @@
         display: block;
     }
 
+    /* ===============================
+       TABLET & BELOW (991px and down)
+    =============================== */
+    @media (max-width: 991.98px) {
+        .heroText {
+            font-size: 50px;
+        }
 
+        .heroText p {
+            font-size: 1rem;
+        }
+
+        .categoryName {
+            font-size: 35px;
+            left: 10px;
+        }
+
+        .splide__slide {
+            height: 350px;
+        }
+
+        .productHeading {
+            font-size: 45px;
+            margin-bottom: 35px;
+        }
+
+        .thirdSectionContent h2 {
+            font-size: 2rem;
+        }
+
+        .imageWrapper {
+            height: 350px;
+        }
+
+        .card-img-top {
+            height: 300px;
+        }
+    }
+
+    /* ===============================
+       SMALL TABLETS (768px and down)
+    =============================== */
     @media (max-width: 768px) {
+        .heroImage {
+            height: 50vh;
+        }
+
+        .heroText {
+            font-size: 40px;
+        }
+
+        .heroText p {
+            font-size: 0.9rem;
+        }
+
+        .categoryName {
+            font-size: 28px;
+            left: 8px;
+            top: 10px;
+        }
+
+        .splide__slide {
+            height: 280px;
+        }
+
+        .productHeading {
+            font-size: 35px;
+            margin-bottom: 25px;
+        }
+
+        .card-body {
+            padding: 12px;
+        }
+
+        .card-img-top {
+            height: 250px;
+        }
+
+        .card-title {
+            font-size: 1rem;
+        }
+
+        .card-text {
+            font-size: 0.85rem;
+        }
+
+        .thirdSection {
+            padding: 30px 15px !important;
+        }
+
         .thirdSectionContent h2 {
             font-size: 1.8rem;
         }
-    }
 
+        .thirdSectionContent p {
+            font-size: 0.95rem;
+        }
 
-    @media screen and (max-width: 600px) {
-        #main-slider {
-            height: 200px !important;
+        .imageWrapper {
+            height: 300px;
+            margin-bottom: 20px;
+        }
+
+        .row.g-4 {
+            gap: 20px !important;
         }
     }
+
+    /* ===============================
+       MOBILE (576px and down)
+    =============================== */
+    @media (max-width: 575.98px) {
+        .heroImage {
+            height: 45vh;
+        }
+
+        .heroText {
+            font-size: 32px;
+            padding: 0 15px;
+        }
+
+        .heroText p {
+            font-size: 0.8rem;
+            margin-top: 15px;
+        }
+
+        .banner {
+            margin-bottom: 20px;
+        }
+
+        .categoryName {
+            font-size: 22px;
+            left: 5px;
+            top: 5px;
+        }
+
+        .splide__slide {
+            height: 220px;
+        }
+
+        .productHeading {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .card-body {
+            padding: 10px;
+        }
+
+        .card-img-top {
+            height: 200px;
+        }
+
+        .card-title {
+            font-size: 0.95rem;
+        }
+
+        .card-text {
+            font-size: 0.8rem;
+        }
+
+        .card-price {
+            font-size: 0.9rem !important;
+        }
+
+        .card-price span {
+            font-size: 1rem !important;
+        }
+
+        .card-discount {
+            font-size: 0.75rem;
+        }
+
+        .btn {
+            padding: 8px 12px !important;
+            font-size: 0.85rem !important;
+        }
+
+        .btn-lg {
+            padding: 10px 20px !important;
+            font-size: 0.9rem !important;
+        }
+
+        .thirdSection {
+            padding: 20px 12px !important;
+            margin-bottom: 25px !important;
+        }
+
+        .thirdSectionContent {
+            text-align: center;
+        }
+
+        .thirdSectionContent h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px !important;
+        }
+
+        .thirdSectionContent p {
+            font-size: 0.9rem;
+            margin-bottom: 15px !important;
+        }
+
+        .imageWrapper {
+            height: 250px;
+            margin-bottom: 15px;
+        }
+
+        .forthSection {
+            padding: 0 10px;
+        }
+
+        .row.g-1 {
+            margin-left: -5px !important;
+            margin-right: -5px !important;
+        }
+
+        .col-sm-12 {
+            padding-left: 5px !important;
+            padding-right: 5px !important;
+        }
+    }
+
+    /* ===============================
+       EXTRA SMALL (360px and down)
+    =============================== */
+    @media (max-width: 360px) {
+        .heroImage {
+            height: 40vh;
+        }
+
+        .heroText {
+            font-size: 26px;
+        }
+
+        .heroText p {
+            font-size: 0.75rem;
+        }
+
+        .categoryName {
+            font-size: 18px;
+        }
+
+        .splide__slide {
+            height: 180px;
+        }
+
+        .productHeading {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .card-img-top {
+            height: 180px;
+        }
+
+        .card-title {
+            font-size: 0.9rem;
+        }
+
+        .card-body {
+            padding: 8px;
+        }
+
+        .thirdSectionContent h2 {
+            font-size: 1.3rem;
+        }
+
+        .thirdSectionContent p {
+            font-size: 0.85rem;
+        }
+
+        .imageWrapper {
+            height: 200px;
+        }
+
+        .btn {
+            padding: 6px 10px !important;
+            font-size: 0.75rem !important;
+        }
+    }
+
+    /* ===============================
+       LANDSCAPE MODE ADJUSTMENTS
+    =============================== */
+    @media (max-height: 500px) and (orientation: landscape) {
+        .heroImage {
+            height: 50vh;
+        }
+
+        .banner {
+            margin-bottom: 15px;
+        }
+    }
+
 </style>
 @endpush
 

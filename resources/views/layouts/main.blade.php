@@ -157,6 +157,231 @@
             color: white;
             opacity: 0.7;
         }
+
+        /* ===============================
+           NAVBAR RESPONSIVE STYLES
+        =============================== */
+
+        /* Default styles for larger screens */
+        .navbar {
+            padding: 12px 0 !important;
+        }
+
+        .navLogo img {
+            width: 150px;
+            height: auto;
+            transition: width 0.3s ease;
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 8px 12px !important;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #6c757d !important;
+        }
+
+        form[role="search"] {
+            width: auto;
+            margin: 0 !important;
+        }
+
+        form[role="search"] input {
+            font-size: 0.95rem;
+            padding: 8px 12px !important;
+            border-radius: 0 !important;
+            min-width: 200px;
+        }
+
+        form[role="search"] button {
+            border-radius: 0 !important;
+            padding: 8px 12px !important;
+        }
+
+        .userName {
+            font-size: 0.95rem;
+            font-weight: 500;
+            white-space: nowrap;
+            padding: 8px 12px !important;
+        }
+
+        #themeToggle {
+            font-size: 1.3rem;
+            cursor: pointer;
+            padding: 8px 12px !important;
+            transition: transform 0.3s ease;
+        }
+
+        #themeToggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* ===============================
+           TABLET & BELOW (991px and down)
+        =============================== */
+        @media (max-width: 991.98px) {
+            .navbar {
+                padding: 10px 0 !important;
+            }
+
+            .navLogo img {
+                width: 130px;
+            }
+
+            .navbar-collapse {
+                padding-top: 15px;
+                border-top: 1px solid #e9ecef;
+                margin-top: 10px;
+            }
+
+            .navbar-nav {
+                text-align: center;
+                width: 100%;
+            }
+
+            .navbar-nav .nav-item {
+                margin: 8px 0;
+            }
+
+            .navbar-nav .nav-link {
+                font-size: 1rem;
+                padding: 10px 0 !important;
+            }
+
+            /* Search bar adjustments */
+            form[role="search"] {
+                width: 100% !important;
+                margin: 12px 0 !important;
+                display: flex;
+            }
+
+            form[role="search"] input {
+                width: 100% !important;
+                font-size: 0.95rem;
+                flex: 1;
+            }
+
+            form[role="search"] button {
+                margin-left: 0 !important;
+            }
+
+            /* Username & theme toggle - stacked */
+            .userName {
+                display: block !important;
+                text-align: center;
+                margin: 12px 0 !important;
+                font-size: 0.95rem;
+                padding: 8px 0 !important;
+                width: 100%;
+            }
+
+            #themeToggle {
+                display: block !important;
+                text-align: center;
+                margin: 8px 0 !important;
+                font-size: 1.2rem;
+                padding: 8px 0 !important;
+                width: 100%;
+            }
+        }
+
+        /* ===============================
+           MOBILE ONLY (575px and down)
+        =============================== */
+        @media (max-width: 575.98px) {
+            .navbar {
+                padding: 8px 8px !important;
+            }
+
+            .container {
+                padding-left: 8px !important;
+                padding-right: 8px !important;
+            }
+
+            /* Logo smaller on mobile */
+            .navLogo img {
+                width: 110px;
+            }
+
+            .navbar-toggler {
+                border: none !important;
+                box-shadow: none !important;
+                padding: 4px 8px !important;
+            }
+
+            .navbar-collapse {
+                padding-top: 12px;
+                margin-top: 8px;
+            }
+
+            .navbar-nav .nav-item {
+                margin: 6px 0;
+            }
+
+            .navbar-nav .nav-link {
+                font-size: 0.9rem;
+                padding: 8px 0 !important;
+            }
+
+            /* Search bar - stack on mobile */
+            form[role="search"] {
+                width: 100% !important;
+                margin: 10px 0 !important;
+                flex-direction: column;
+            }
+
+            form[role="search"] input {
+                width: 100% !important;
+                font-size: 0.85rem;
+                padding: 8px 8px !important;
+                margin-bottom: 6px;
+            }
+
+            form[role="search"] button {
+                width: 100% !important;
+                font-size: 0.9rem;
+            }
+
+            /* Username on mobile */
+            .userName {
+                font-size: 0.85rem;
+                margin: 10px 0 !important;
+                padding: 6px 0 !important;
+            }
+
+            #themeToggle {
+                font-size: 1.1rem;
+                margin: 8px 0 !important;
+                padding: 6px 0 !important;
+            }
+        }
+
+        /* ===============================
+           EXTRA SMALL (360px and down)
+        =============================== */
+        @media (max-width: 360px) {
+            .navLogo img {
+                width: 90px;
+            }
+
+            .navbar-nav .nav-link {
+                font-size: 0.8rem;
+            }
+
+            form[role="search"] input {
+                font-size: 0.8rem;
+            }
+
+            .userName {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* footer css */
+        
     </style>
 
     @stack('styles')
